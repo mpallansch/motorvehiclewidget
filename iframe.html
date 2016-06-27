@@ -68,16 +68,19 @@
                 <div class="section-head">{{currentState}}</div>
                 <div class="section-content padding-sides">
                     <p class="align-center">IF THE FOLLOWING MOTOR VEHICLE PREVENTION STRATEGIES WERE IMPLEMENTED IN THE STATE OF {{currentState | uppercase}}</p>
-                    <ul>
-                        <li data-ng-repeat="strategy in data.years[currentYear].states[currentState].notImplemented">{{strategy}}</li>
-                    </ul>
+                    <div id="strategy-list-container">
+                        <div>[TODO] state image</div>
+                        <ul id="strategy-list">
+                            <li data-ng-repeat="strategy in data.years[currentYear].states[currentState].notImplemented">{{strategy}}</li>
+                        </ul>
+                    </div>
                     <div class="align-center">
-                        <p>[TODO] </p>
-                        <p>[TODO] </p>
-                        <p>[TODO] </p>
-                        <p>[TODO] </p>
-                        <p>[TODO] </p>
-                        <p>[TODO] </p>
+                        <p>Motor vehicle injuries can be reduced by <strong>[TODO] percent.</strong></p>
+                        <p>Injuries Prevented: <strong>[TODO] injuries</strong></p>
+                        <p>Motor vehicle injuries can be reduced by <strong>[TODO] percent.</strong></p>
+                        <p>Fatalities Prevented: <strong>[TODO] deaths</strong></p>
+                        <p>The monetary benefit of injuries prevented and lives saved is <strong>$[TODO]</strong></p>
+                        <p>Would cost the state of {{currentState}} approximately <strong>$[TODO]</strong> a year to implement. If costs are offset by fines - approximately <strong>$[TODO]</strong> a year.</p>
                     </div>
                 </div>
             </div>
@@ -87,8 +90,10 @@
                     <!--<select data-ng-model="currentStrategy">
                         <option data-ng-repeat="(strategy, foo) in data.years[currentYear].states[currentState].implemented" value="{{strategy}}">{{strategy}}</option>
                     </select>--><div id="strategy-select"><label data-ng-repeat="(strategy, foo) in data.years[currentYear].states[currentState].implemented" ><input type="radio" name="strategy" data-ng-model="$parent.currentStrategy" data-ng-value="strategy" /><span>{{strategy}}</span></label></div><!--
-                    --><div id="map">
-                        <p>[TODO] This is a map of the data for {{currentStrategy}} intervention in {{currentState}} in the year {{currentYear}}</p>
+                    --><div id="map-container">
+                        <p>Select other states on the map to see how they compare</p>
+                        <div id="map">[TODO] This is a map of the data for {{currentStrategy}} intervention in {{currentState}} in the year {{currentYear}}</div>
+                        <div id="map-caption">[TODO] This is the caption for {{currentState}} for the {{currentStrategy}} intervention</div>
                     </div>
                 </div>
             </div>

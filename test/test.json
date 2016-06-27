@@ -10,7 +10,14 @@
                     "implemented" : {
                         "Red Light Camera" : {"foo": "bar"},
                         "In Person Renewal" : {"foo": "bar"},
-                        "Sobriety Checkpoints" : {"foo": "bar"}
+                        "Sobriety Checkpoints" : {"foo": "bar"},
+                        "License Plate Impound" : {"foo": "bar"},
+                        "Motorcycle Helmet" : {"foo": "bar"},
+                        "Saturation Patrols" : {"foo": "bar"},
+                        "Limits on Diversion" : {"foo": "bar"},
+                        "Alchohol Interlocks" : {"foo": "bar"},
+                        "Bicycle Helmets" : {"foo": "bar"},
+                        "Primary Enforcement" : {"foo": "bar"}
                     }
                 },
                 "Texas": {
@@ -36,7 +43,14 @@
                     "implemented" : {
                         "Red Light Camera" : {"foo": "bar"},
                         "In Person Renewal" : {"foo": "bar"},
-                        "Sobriety Checkpoints" : {"foo": "bar"}
+                        "Sobriety Checkpoints" : {"foo": "bar"},
+                        "License Plate Impound" : {"foo": "bar"},
+                        "Motorcycle Helmet" : {"foo": "bar"},
+                        "Saturation Patrols" : {"foo": "bar"},
+                        "Limits on Diversion" : {"foo": "bar"},
+                        "Alchohol Interlocks" : {"foo": "bar"},
+                        "Bicycle Helmets" : {"foo": "bar"},
+                        "Primary Enforcement" : {"foo": "bar"}
                     }
                 },
                 "Texas": {
