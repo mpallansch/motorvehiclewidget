@@ -1,0 +1,119 @@
+#loading-modal {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#loading-modal p {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#loading-modal svg {
+    width: 50px;
+    height: 50px;
+    transform-origin: bottom right;
+    animation: rotating 1s linear infinite;
+    margin-right: 50px;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#content {
+    font-family: Helvetica;
+}
+
+.border-bottom {
+    border-bottom: 1px solid white;
+}
+
+.padding-sides {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.fontXXL {
+    font-size: xx-large;
+}
+
+.fontXL {
+    font-size: x-large;
+}
+
+.section-head {
+    color: white;
+    background: #0b4c73;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(100%, rgba(11,76,115,1)), color-stop(0%, rgba(64,118,154,1)));
+    background: -o-linear-gradient(to top, rgba(11,76,115,1), rgba(64,118,154,1));
+    background: -moz-linear-gradient(to top, rgba(11,76,115,1), rgba(64,118,154,1));
+    background: linear-gradient(to top, rgba(11,76,115,1), rgba(64,118,154,1));
+    padding: 10px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.section-head p {
+    margin: 0 0 5px 0;
+    padding-bottom: 10px;
+}
+
+.section-head select {
+    font-size: x-large;
+}
+
+.sub-section {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    width: 50%;
+    height: 250px;
+}
+
+.sub-section:nth-child(1), .sub-section:nth-child(4){
+    background: #efeef6;
+}
+
+.bubble {
+    background: url(../img/circle.png);
+    width: 66px;
+    height: 62px;
+    padding-top: 15px;
+    display: inline-block;
+    color: white;
+}
+
+#strategy-select {
+    display: inline-block;
+    width: 35%;
+}
+
+#strategy-select label {
+    display: block;
+    margin: 2px;
+}
+
+#map {
+    width: 65%;
+    height: 200px;
+    margin-top: 20px;
+    background-color: lightgray;
+    display: inline-block;
+}

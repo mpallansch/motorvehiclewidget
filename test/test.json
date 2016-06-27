@@ -1,0 +1,56 @@
+{
+    "years": {
+        "2013": {
+            "states": {
+                "New York": {
+                    "killed" : 20,
+                    "injured" : 30,
+                    "money" : 1.45,
+                    "notImplemented" : ["Speed Camera", "Increased Seatbelt Fine", "Campaign"],
+                    "implemented" : {
+                        "Red Light Camera" : {"foo": "bar"},
+                        "In Person Renewal" : {"foo": "bar"},
+                        "Sobriety Checkpoints" : {"foo": "bar"}
+                    }
+                },
+                "Texas": {
+                    "killed" : 25,
+                    "injured" : 10,
+                    "money" : 1.32,
+                    "notImplemented" : ["Speed Camera", "Increased Seatbelt Fine", "Campaign"],
+                    "implemented" : {
+                        "Red Light Camera" : {"foo": "bar"},
+                        "In Person Renewal" : {"foo": "bar"},
+                        "Sobriety Checkpoints" : {"foo": "bar"}
+                    }
+                }
+            }
+        },
+        "2011": {
+            "states": {
+                "Georgia": {
+                    "killed" : 5,
+                    "injured" : 10,
+                    "money" : 1.86,
+                    "notImplemented" : ["Speed Camera", "Increased Seatbelt Fine", "Campaign"],
+                    "implemented" : {
+                        "Red Light Camera" : {"foo": "bar"},
+                        "In Person Renewal" : {"foo": "bar"},
+                        "Sobriety Checkpoints" : {"foo": "bar"}
+                    }
+                },
+                "Texas": {
+                    "killed" : 10,
+                    "injured" : 2,
+                    "money" : 1.00,
+                    "notImplemented" : ["Speed Camera", "Increased Seatbelt Fine", "Campaign"],
+                    "implemented" : {
+                        "Red Light Camera" : {"foo": "bar"},
+                        "In Person Renewal" : {"foo": "bar"},
+                        "Sobriety Checkpoints" : {"foo": "bar"}
+                    }
+                }
+            }
+        }
+    }
+}

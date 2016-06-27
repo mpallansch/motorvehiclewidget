@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <title>MV PICCS</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <!--TODO Replace this line with SSI-->
+        <link rel="stylesheet" href="/TemplatePackage/contrib/widgets/tp-widget-common.css" />
+        <!--include virtual="/TemplatePackage/contrib/widgets/includes/branding-cdc-header.html" -->
+        <!--TODO end of section-->
+    </head>
+    <body data-ng-controller="mainCtrl">
+        <!--TODO Remove when SSI is included -->
+        <div id="tp-widget-share-modal" class="cdc-share-code" style="display: none;">
+            <div class="share-exit" onclick="cdcCommon.events.shareClose()">X</div>
+            Copy and paste the code below:
+            <textarea id="tp-widget-share-code"></textarea><br />
+        </div>
+        <div id="tp-widget-info-modal" class="cdc-info-modal" style="display: none;">
+            <div class="info-exit" onclick="cdcCommon.events.infoClose()">X</div>
+            <div class='rid_942249fa_131961' data-apiroot='//tools.cdc.gov/api' data-mediatype='html' data-mediaid='131961' data-stripscripts='false' data-stripanchors='false' data-stripimages='false' data-stripcomments='false' data-stripstyles='false' data-imagefloat='' data-cssclasses='' data-ids='' data-xpath='' data-oe='' data-of='' data-ns='' data-postprocess='' data-nw='false'></div><script src='//tools.cdc.gov/api/embed/html/js/embed-2.0.2.js' ></script><noscript>You need javascript enabled to view this content or go to <a href='//tools.cdc.gov/api/v2/resources/media/131961/noscript'>source URL</a>.</noscript>
+            <br />
+            <div class="info-close-wrap"><div class="info-close" onclick="cdcCommon.events.infoClose()">Close</div>
+            </div></div>
+        <div class="widget-header">
+            <a class="cdc-link" href="http://www.cdc.gov" target="_blank" onclick="cdcCommon.events.logoClick()"><img src="/TemplatePackage/contrib/widgets/images/cdc_badge.png" alt="CDC Logo" height="75px" /></a>
+            <div class="cdc-info" onclick="cdcCommon.events.infoOpen()">Info</div>
+            <div class="cdc-share" onclick="cdcCommon.events.shareOpen()">Share</div>
+        </div>
+        <!--TODO end of section-->
+
+        <div id="content">
+            <div class="section">
+                <div class="section-head">
+                    <p class="border-bottom">Motor Vehicle Injuries and Deaths</p>
+                    <label for="year-input">In </label>
+                    <select data-ng-model="currentYear" id="year-input">
+                        <option data-ng-repeat="(year, foo) in data.years" value="{{year}}">{{year}}</option>
+                    </select>
+                    <label for="state-input"> in </label>
+                    <select data-ng-model="currentState" id="state-input">
+                        <option data-ng-repeat="(state, foo) in data.years[currentYear].states" value="{{state}}">{{state}}</option>
+                    </select>
+                </div>
+                <div class="section-content">
+                    <div class="sub-section">
+                        <p class="fontXXL"><span class="bubble">{{data.years[currentYear].states[currentState].killed}}</span> in 30</p>
+                        <div>[TODO] people</div>
+                        <p>People killed in motor vehicle related crashes</p>
+                    </div><!--
+                    --><div class="sub-section">
+                        <p class="fontXXL"><span class="bubble">{{data.years[currentYear].states[currentState].injured}}</span> in 30</p>
+                        <div>[TODO] people</div>
+                        <p>People injured in motor vehicle related crashes</p>
+                    </div><!--
+                    --><div class="sub-section">
+                        <p class="fontXL">${{data.years[currentYear].states[currentState].money}} Billion</p>
+                        <div>[TODO] dollars</div>
+                        <p>Total cost of crash-related deaths in {{currentState}}</p>
+                    </div><!--
+                    --><div class="sub-section">
+                        <div>
+                            <p>[TODO] interesting section</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-head">{{currentState}}</div>
+                <div class="section-content padding-sides">
+                    <p class="align-center">IF THE FOLLOWING MOTOR VEHICLE PREVENTION STRATEGIES WERE IMPLEMENTED IN THE STATE OF {{currentState | uppercase}}</p>
+                    <ul>
+                        <li data-ng-repeat="strategy in data.years[currentYear].states[currentState].notImplemented">{{strategy}}</li>
+                    </ul>
+                    <div class="align-center">
+                        <p>[TODO] </p>
+                        <p>[TODO] </p>
+                        <p>[TODO] </p>
+                        <p>[TODO] </p>
+                        <p>[TODO] </p>
+                        <p>[TODO] </p>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-head">Motor Vehicle Prioritizing Interventions and Cost Calculator for States (MV PICCS)</div>
+                <div class="section-content">
+                    <!--<select data-ng-model="currentStrategy">
+                        <option data-ng-repeat="(strategy, foo) in data.years[currentYear].states[currentState].implemented" value="{{strategy}}">{{strategy}}</option>
+                    </select>--><div id="strategy-select"><label data-ng-repeat="(strategy, foo) in data.years[currentYear].states[currentState].implemented" ><input type="radio" name="strategy" data-ng-model="$parent.currentStrategy" data-ng-value="strategy" /><span>{{strategy}}</span></label></div><!--
+                    --><div id="map">
+                        <p>[TODO] This is a map of the data for {{currentStrategy}} intervention in {{currentState}} in the year {{currentYear}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="loading-modal" data-ng-show="loading">
+            <p><svg><circle cx="50" cy="50" r="45" fill="transparent" stroke="#000000" stroke-width="10px" /></svg></p>
+        </div>
+        <!--<script src="/TemplatePackage/contrib/libs/angular/1.4.3/angular.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+        <script src="/TemplatePackage/contrib/libs/angular/1.4.3/angular-route.min.js"></script>
+        <script src="/TemplatePackage/contrib/libs/jquery/jquery-1.11.2.min.js"></script>
+        <script src="/TemplatePackage/contrib/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="/TemplatePackage/contrib/widgets/tp-widget-common.js"></script>
+    </body>
+</html>
