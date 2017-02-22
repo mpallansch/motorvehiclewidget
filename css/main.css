@@ -82,6 +82,11 @@ body {
     bottom: 0;
 }
 
+#footer-buttons a {
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
 .modal {
     position: absolute;
     top: 0;
@@ -118,6 +123,11 @@ body {
     overflow-y: auto;
 }
 
+.page-content p {
+    margin: 0;
+    margin-top: 5px;
+}
+
 .page-header h2, .page-header h4 {
     display: table-cell;
     vertical-align: middle;
@@ -125,16 +135,53 @@ body {
     margin: 0;
 }
 
+#page2 .content-section:nth-child(1),
+#page2 .content-section:nth-child(2),
+#page4 .content-section:nth-child(1),
+#page4 .content-section:nth-child(1){
+    position: relative;
+    height: 65px;
+}
+
+.content-section {
+    padding-top: 5px;
+}
+
+.content-section p:first-child{
+    margin-top: 0;
+}
+
+#state-input {
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+    width: 200px;
+}
+
 #map {
     height: 200px;
 }
 
-#logo {
-    height: 45px;
+#intervention-list {
+    margin: 0;
+    display: inline-block;
+    padding: 10px 5px 10px 25px;
 }
 
-#carousel-dots{
-    
+.intervention-list-item {
+    width: 50%;
+    float: left;
+    margin: 5px 0px;
+}
+
+.intervention-list-item:nth-child(even){
+    float: right;
+}
+
+#logo {    
+    border-radius: 10px;
+    border: 1px solid white;
+    height: 45px;
 }
 
 .dot{
@@ -142,7 +189,7 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: blue;
+    background-color: #404040;
 }
 
 #carousel-dots.page1 .dot:nth-child(1),
@@ -150,7 +197,7 @@ body {
 #carousel-dots.page3 .dot:nth-child(3),
 #carousel-dots.page4 .dot:nth-child(4),
 #carousel-dots.page5 .dot:nth-child(5){
-    background-color: black;
+    background-color: silver;
 }
 
 .arrow {
@@ -175,7 +222,10 @@ body {
 }
 
 .percentage {
-    float: right;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 5px;
 }
 
 .sample {
@@ -196,11 +246,53 @@ body {
     background-color: khaki;
 }
 
+.center-align {
+    text-align: center;
+}
+
+.padding {
+    padding: 15px;
+}
+
+.padding-left-right {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+.small-icon {
+    width: 60px;
+    height: 60px;
+    vertical-align: top;
+    float: left;
+    margin-right: 5px;
+}
+
+.small-font {
+    font-size: small;
+}
+
+.x-large-font {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.darkblue-font {
+    color: rgb(53, 82, 137);
+}
+
 .darkblue {
     color: white;
-    background-color: #075290;
+    background-color: rgb(53, 82, 137);
 }
 
 .lightblue {
-    background-color: #e3f2fe;
+    background-color: rgb(212, 228, 255);
+}
+
+.white {
+    background-color: white;
 }

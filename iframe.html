@@ -7,39 +7,40 @@
     <body data-ng-controller="mainCtrl">
         <div id="content">
             <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" swipe-page>
-                <div id="page1" class="page">
+                <div id="page1" class="page lightblue">
                     <div class="page-header darkblue">
                         <h2>Motor Vehicle Injury Prevention: Benefits and Costs by State</h2>
                     </div>
                     <div class="page-content">
-                        <p><strong>What strategies are you missing?</strong></p>
-                        <p>Select your state.</p>
-                        <select data-ng-model="state" id="state-input">
-                            <option data-ng-repeat="(st, data) in data" value="{{st}}">{{st}}</option>
-                        </select>
-                        <div class="content-section darkblue">
+                        <div class="content-section center-align white">
+                            <p><strong>What strategies are you missing?</strong></p>
+                            <p>Select your state.</p>
+                            <select data-ng-model="state" id="state-input">
+                                <option data-ng-repeat="(st, data) in data" value="{{st}}">{{st}}</option>
+                            </select>
+                        </div>
+                        <div class="content-section darkblue padding">
                             If the following strategies where implemented in your state....
                         </div>
-                        <div class="content-section lightblue">
-                            <ul>
-                                <li data-ng-repeat="strategy in data[state]['Unimplemented Interventions (Recommended by MV PICCS)']" data-ng-if="strategy">{{strategy}}</li>
+                        <div class="content-section">
+                            <ul id="intervention-list" class="small-font">
+                                <li class="intervention-list-item" data-ng-repeat="strategy in data[state]['Unimplemented Interventions (Recommended by MV PICCS)']" data-ng-if="strategy">{{strategy}}</li>
                             </ul>
                             <span data-ng-if="data[state]['Notation: Some strategies not included because of cost - effectiveness.'] === 'Yes'">*Some MV PICCS strategies were not included because they are not cost-effective to implement in your state</span>
                         </div>
-                        <div class="content-section lightblue">
-                            <p>See the costs and benefits of implementing these strategies on the next screen...</p>
+                        <div class="content-section padding-left-right center-align small-font">
+                            See the costs and benefits of implementing these strategies on the next screen...
                         </div>
                     </div>
                 </div><div id="page2" class="page">
                     <div class="page-header darkblue">
                         <h2>{{state}}<br/>Summary of strategies not implemented.</h2>
                     </div>
-                    <div class="page-content">
-                        <div><img src="" alt="TODO"/>Injuries Prevented: {{data[state]['Total # of Injuries Reduced']| number:0}}<span class="percentage">Reduced Injuries: {{data[state]['Percent Reduction in Injuries']}}</span></div>
-                        <div><img src="" alt="TODO"/>Lives Saved: {{data[state]['Total # of Fatalities Reduced']| number: 0}}<span class="percentage">Reduced Deaths: {{data[state]['Percent Reduction in Fatalities']}}</span></div>
-                        <div><strong>Monetary Benefit</strong> per year<br/>Cost Benefit: ${{data[state]['Total Benefit']| number:0}}<br/>Estimated from injuries prevented and lives saved<br/><strong>Cost to Implement</strong> per year: ${{data[state]['Total Cost (w/Fines Excluded)'] | number:0}}* <br/>*If fines are used - approx. ${{data[state]['Total Cost'] < 0 ? 0 : data[state]['Total Cost']| number:0}}/year <span data-ng-if="data[state]['Total Cost'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
-                        <img src="" alt="TODO"/>
-                        <div class="content-section lightblue">
+                    <div class="page-content lightblue small-font">
+                        <div class="content-section margin-bottom white darkblue-font"><img src="" alt="TODO" class="small-icon"/>Injuries Prevented<br/> <span class="x-large-font">{{data[state]['Total # of Injuries Reduced']| number:0}}</span><span class="percentage">Reduced Injuries<br/><span class="percentage-figure x-large-font"> {{data[state]['Percent Reduction in Injuries']}}</span></span></div>
+                        <div class="content-section margin-bottom white darkblue-font"><img src="" alt="TODO" class="small-icon"/>Lives Saved<br/> <span class="x-large-font">{{data[state]['Total # of Fatalities Reduced']| number: 0}}</span><span class="percentage">Reduced Deaths<br/> <span class="percentage-figure x-large-font"> {{data[state]['Percent Reduction in Fatalities']}}</span></span></div>
+                        <div class="content-section margin-bottom white"><strong>Monetary Benefit</strong> per year<br/>Cost Benefit: ${{data[state]['Total Benefit']| number:0}}<br/>Estimated from injuries prevented and lives saved<br/><strong>Cost to Implement</strong> per year: ${{data[state]['Total Cost (w/Fines Excluded)'] | number:0}}* <br/>*If fines are used - approx. ${{data[state]['Total Cost'] < 0 ? 0 : data[state]['Total Cost']| number:0}}/year <span data-ng-if="data[state]['Total Cost'] < 0"><br/>See MV PICCS for specific cost-related details</span><img src="" alt="TODO"/></div>
+                        <div class="content-section padding white">
                             <p>See how your state compares nationwide.</p>
                         </div>
                     </div>
@@ -122,7 +123,7 @@
                     <a href="#" data-ng-click="modal = false">Back</a>
                 </div>
             </div>
-            <div id="footer" class="lightblue">
+            <div id="footer" class="lightblue center-align">
                 <div id="carousel-dots" class="page{{pageNumber}}">
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -130,10 +131,10 @@
                     <span class="dot"></span>
                     <span class="dot"></span>
                 </div>
-                <div id="footer-buttons">
-                    <a href="#" data-ng-click="modal = 'embed'">Embed</a>
-                    <a href="#" data-ng-click="modal = 'disclaimer'">Disclaimer</a>
-                    <a href="#" data-ng-click="modal = 'info'">Info</a>
+                <div id="footer-buttons" class="padding">
+                    <a class="darkblue" href="#" data-ng-click="modal = 'embed'">Embed</a>
+                    <a class="darkblue" href="#" data-ng-click="modal = 'disclaimer'">Disclaimer</a>
+                    <a class="darkblue" href="#" data-ng-click="modal = 'info'">Info</a>
                 </div>
                 <a target="_blank" href="https://www.cdc.gov">
                     <img id="logo" src="/TemplatePackage/contrib/widgets/images/cdc_badge.png" alt="CDC Logo" />
