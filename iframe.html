@@ -9,42 +9,47 @@
             <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" swipe-page>
                 <div id="page1" class="page">
                     <div class="page-header darkblue">
-                        <h2>Motor Vehicle Intervention and Statistics by State</h2>
+                        <h2>Motor Vehicle Injury Prevention: Benefits and Costs by State</h2>
                     </div>
                     <div class="page-content">
-                        <p><strong>What are you missing?</strong></p>
-                        <p>Select a state to see which motor vehicle interventions are unimplemented in your state.</p>
+                        <p><strong>What strategies are you missing?</strong></p>
+                        <p>Select your state.</p>
                         <select data-ng-model="state" id="state-input">
                             <option data-ng-repeat="(st, data) in data" value="{{st}}">{{st}}</option>
                         </select>
                         <div class="content-section darkblue">
-                            If the following motor vehicle injury prevention strategies where implemented in the state of <strong>{{state}}</strong>...
+                            If the following strategies where implemented in your state....
                         </div>
                         <div class="content-section lightblue">
-                            <ol>
+                            <ul>
                                 <li data-ng-repeat="strategy in data[state]['Unimplemented Interventions (Recommended by MV PICCS)']" data-ng-if="strategy">{{strategy}}</li>
-                            </ol>
+                            </ul>
+                            <span data-ng-if="data[state]['Notation: Some strategies not included because of cost - effectiveness.'] === 'Yes'">*Some MV PICCS strategies were not included because they are not cost-effective to implement in your state</span>
                         </div>
-                        <p>Go to the next screen to see the cost benefit of implementing these strategies.</p>
+                        <div class="content-section lightblue">
+                            <p>See the costs and benefits of implementing these strategies on the next screen...</p>
+                        </div>
                     </div>
                 </div><div id="page2" class="page">
                     <div class="page-header darkblue">
-                        <h2>{{state}}</h2>
+                        <h2>{{state}}<br/>Summary of strategies not implemented.</h2>
                     </div>
                     <div class="page-content">
-                        <div>Reduced Injuries: {{data[state]['Total # of Injuries Reduced'] | number:0}}<span class="percentage">{{data[state]['Percent Reduction in Injuries']}}</span></div>
-                        <div>Reduced Deaths: {{data[state]['Total # of Fatalities Reduced'] | number: 0}}<span class="percentage">{{data[state]['Percent Reduction in Fatalities']}}</span></div>
-                        <div>Monetary <strong>benefit</strong> of injuries prevented and lives saved<br/>Cost Benefit: ${{data[state]['Total Benefit'] | number:0}}<br/>Cost to implement: ${{data[state]['Total Cost (w/Fines Excluded)'] | number:0}}* <br/>*If costs are offset by fines - approx. ${{data[state]['Total Cost'] < 0 ? 0 : data[state]['Total Cost'] | number:0}}/year</div>
-                        <p>Go to the next screen to see how your state compares in motor vehicle injury prevention strategies nationwide.</p>
+                        <div><img src="" alt="TODO"/>Injuries Prevented: {{data[state]['Total # of Injuries Reduced']| number:0}}<span class="percentage">Reduced Injuries: {{data[state]['Percent Reduction in Injuries']}}</span></div>
+                        <div><img src="" alt="TODO"/>Lives Saved: {{data[state]['Total # of Fatalities Reduced']| number: 0}}<span class="percentage">Reduced Deaths: {{data[state]['Percent Reduction in Fatalities']}}</span></div>
+                        <div><strong>Monetary Benefit</strong> per year<br/>Cost Benefit: ${{data[state]['Total Benefit']| number:0}}<br/>Estimated from injuries prevented and lives saved<br/><strong>Cost to Implement</strong> per year: ${{data[state]['Total Cost (w/Fines Excluded)'] | number:0}}* <br/>*If fines are used - approx. ${{data[state]['Total Cost'] < 0 ? 0 : data[state]['Total Cost']| number:0}}/year <span data-ng-if="data[state]['Total Cost'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
+                        <img src="" alt="TODO"/>
+                        <div class="content-section lightblue">
+                            <p>See how your state compares nationwide.</p>
+                        </div>
                     </div>
                 </div><div id="page3" class="page">
                     <div class="page-header darkblue">
-                        <h2>Motor Vehicle Intervention and Statistics by State</h2>
+                        <h2>How Does Your State Compare?</h2>
                     </div>
                     <div class="page-content">
-                        <p><strong>How does your state compare?</strong></p>
-                        <p>{{state | uppercase}}</p>
-                        <p>Choose an intervention to see individual implementation costs and benefits.</p>
+                        <p>{{state| uppercase}}</p>
+                        <p>Select one strategy. See which states have implemented it on the map below</p>
                         <select data-ng-model="intervention" data-ng-change="drawMap()">
                             <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
                         </select>
@@ -53,39 +58,95 @@
                             <span id="implemented-sample" class="sample"></span><span>Implemented</span>
                             <span id="not-implemented-sample" class="sample"></span><span>Not Implemented</span>
                         </div>
+                        <p>See the costs and benefits of implementing this strategy on the next screen</p>
                     </div>
                 </div><div id="page4" class="page">
                     <div class="page-header darkblue">
-                        <h4>Implementation of {{intervention | lowercase}} in the state of {{state}}...</h4>
+                        <h4>{{intervention}}<br/>Implementation of this strategy in {{state}}...</h4>
                     </div>
                     <div class="page-content">
-                        <div>Reduced Injuries: {{data[state][intervention + ': # of Injuries Reduced'] | number:0}}</div>
-                        <div>Reduced Deaths: {{data[state][intervention + ': # of Fatalities Reduced'] | number:0}}</div>
-                        <div>Monetary <strong>benefit</strong> of injuries prevented and lives saved<br/>Cost Benefit: ${{data[state][intervention + ': Benefit $/year'] | number:0}}<br/>Cost to implement: ${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}* <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year'] | number:0}}/year</div>
-                        <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip">https://wwwn.cdc.gov/mvip</a> to choose your own combination of motor vehicle strategies. Based on your own individualized budget, MV PICCS can also provide a list of recommended strategies to implement in your state.</p>
+                        <div><img src="" alt="TODO"/>Injuries Prevented: {{data[state][intervention + ': # of Injuries Reduced']| number:0}}<span class="percentage">Reduced Injuries: {{data[state][intervention + ': Percent Reduction in Injuries']}}</span></div>
+                        <div><img src="" alt="TODO"/>Lives Saved: {{data[state][intervention + ': # of Fatalities Reduced']| number:0}}<span class="percentage">Reduced Deaths: {{data[state][intervention + ': Percent Reduction in Fatalities']}}</span></div>
+                        <div><strong>Monetary Benefit</strong> per year<br/>Cost Benefit: ${{data[state][intervention + ': Benefit $/year']| number:0}}<br/>Estimated from injuries prevented and lives saved<br/><strong>Cost to Implement</strong> per year: ${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}* <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year']| number:0}}/year <span data-ng-if="data[state][intervention + ': Cost $ / year'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
+                        <img src="" alt="TODO"/>
+                        <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip">wwwn.cdc.gov/mvip</a> for a list of recommended strategies to implement based on your state's budget.</p>
+                    </div>
+                </div><div id="page5" class="page">
+                    <div class="page-header darkblue">
+                        <h2>Glossary of Terms</h2>
+                    </div>
+                    <div class="page-content">
+                        <p><strong>Automated Red-Light Enforcement:</strong> red-light cameras that capture an image of a vehicle that runs a red light to detect and prevent red-light runners. </p> 
+                        <p><strong>Automated Speed-Camera Enforcement:</strong> speed cameras that capture an image of a vehicle that is speeding to detect and prevent speeders.  </p>
+                        <p><strong>Alcohol Interlocks:</strong> a device that keeps the vehicle from starting unless the driver has a blood alcohol concentration below a pre-set limit.</p>
+                        <p><strong>Sobriety Checkpoints:</strong> predetermined locations at which law enforcement officers stop vehicles to check whether the driver is impaired.</p>
+                        <p><strong>Saturation Patrols:</strong> consist of a large number of law enforcement officers patrolling a specific area for a set time to increase visibility of enforcement.</p>
+                        <p><strong>Bicycle Helmet Laws for Children:</strong>  laws to encourage parents to require their children to use helmets.</p>
+                        <p><strong>Universal Motorcycle Helmet Laws:</strong> laws that require motorcycle riders to wear a helmet while riding on public roads. The universal laws apply to all motorcycle operators and passengers.</p>
+                        <p><strong>Primary Enforcement of Seat Belt Laws:</strong> police officers can stop a vehicle and write a ticket for anyone not buckled up.</p>
+                        <p><strong>High-Visibility Enforcement for Seat Belts and Child Restraint and Booster Laws:</strong> short (typically lasting for two weeks), intense, highly publicized periods of increased belt law enforcement, frequently using checkpoints (in states where they are permitted), saturation patrols, or enforcement zones.</p>
+                        <p><strong>License Plate Impoundment:</strong> a sanction that affects a Driving While Intoxicated (DWI) offender’s license plate and prevents the offender from driving the vehicle while the sanction is in effect.</p>
+                        <p><strong>Limits on Diversion and Plea Agreements:</strong> diversion programs defer sentencing while a DWI offender participates in some form of alcohol education or treatment. A plea agreement allows a DWI offender to negotiate the charges against him or her or the terms of his or her sentence. Limits on diversions and plea agreements restricts the number of times an offender can defer his or her sentence and/or negotiate charges and the terms of his or her sentence.</p>
+                        <p><strong>Vehicle Impoundment:</strong> a sanction affecting a DWI offender’s vehicle that allows seizure or storage of the vehicle for a designated period of time.</p>
+                        <p><strong>In-Person License Renewal:</strong> drivers must appear in person to renew an expiring license, pay the license fee, and have new pictures taken for their licenses.</p>
+                        <p><strong>Increased Fines for Seat Belt Use:</strong> higher penalties for seat belt use violations. Low fines may not convince non-users to buckle up and may send a message that seat belt use laws are not taken seriously.</p>
                     </div>
                 </div>
                 <p data-ng-click="changePage($event)" class="arrow left-arrow" data-ng-show="showArrows && pageNumber > 1">&lt;</p>
-                <p data-ng-click="changePage($event)" class="arrow right-arrow" data-ng-show="showArrows && pageNumber < 4">&gt;</p>
+                <p data-ng-click="changePage($event)" class="arrow right-arrow" data-ng-show="showArrows && pageNumber < 5">&gt;</p>
+            </div>
+            <div id="embed-modal" class="modal" data-ng-show="modal === 'embed'">
+                <div class="page-header lightblue">
+                    <h2>Embed</h2>
+                </div>
+                <div class="page-content">
+                    <textarea>{{embedCode}}</textarea>
+                    <a href="#" data-ng-click="modal = false">Back</a>
+                </div>
+            </div>
+            <div id="disclaimer-modal" class="modal" data-ng-show="modal === 'disclaimer'">
+                <div class="page-header lightblue">
+                    <h2>Disclaimer</h2>
+                </div>
+                <div class="page-content">
+                    <div class="rid_5a363e44_131963" data-apiroot="//tools.cdc.gov/api" data-mediatype="html" data-mediaid="131963" data-stripscripts="true" data-stripanchors="false" data-stripimages="false" data-stripcomments="true" data-stripstyles="true" data-ids="mdisclaimer" data-xpath="" data-oe="utf-8" data-of="xhtml" data-ns="cdc" data-postprocess="" data-nw="true"></div>
+                    <a href="#" data-ng-click="modal = false">Back</a>
+                </div>
+            </div>
+            <div id="info-modal" class="modal" data-ng-show="modal === 'info'">
+                <div class="page-header lightblue">
+                    <h2>Info</h2>
+                </div>
+                <div class="page-content">
+                    <div class="rid_7bc9b9c2_131962" data-apiroot="//tools.cdc.gov/api" data-mediatype="html" data-mediaid="131962" data-stripscripts="true" data-stripanchors="false" data-stripimages="false" data-stripcomments="true" data-stripstyles="true" data-ids="mprivacy" data-xpath="" data-oe="utf-8" data-of="xhtml" data-ns="cdc" data-postprocess="" data-nw="true"></div>
+                    <a href="#" data-ng-click="modal = false">Back</a>
+                </div>
             </div>
             <div id="footer" class="lightblue">
+                <div id="carousel-dots" class="page{{pageNumber}}">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
                 <div id="footer-buttons">
-                    <a href="#">Embed</a>
-                    <a href="#">Disclaimer</a>
-                    <a href="#">Info</a>
+                    <a href="#" data-ng-click="modal = 'embed'">Embed</a>
+                    <a href="#" data-ng-click="modal = 'disclaimer'">Disclaimer</a>
+                    <a href="#" data-ng-click="modal = 'info'">Info</a>
                 </div>
                 <a target="_blank" href="https://www.cdc.gov">
                     <img id="logo" src="/TemplatePackage/contrib/widgets/images/cdc_badge.png" alt="CDC Logo" />
                 </a>
             </div>
         </div>
-        
+
         <div id="loading-modal" data-ng-show="loading">
             <p><svg><circle cx="50" cy="50" r="45" fill="transparent" stroke="#000000" stroke-width="10px" /></svg></p>
         </div>
         <!--<script src="/TemplatePackage/contrib/libs/angular/1.4.3/angular.min.js"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
-        
+
         <script src="/TemplatePackage/contrib/libs/angular/1.4.3/angular-route.min.js"></script>
         <script src="/TemplatePackage/contrib/libs/jquery/jquery-1.11.2.min.js"></script>
         <script src="/TemplatePackage/3.0/js/libs/jquery.mobile.custom.min.js"></script>
@@ -93,6 +154,7 @@
         <script src="/TemplatePackage/3.0/js/libs/d3/d3.min.js"></script>
         <script src="/TemplatePackage/3.0/js/libs/d3/topojson.v1.min.js"></script>
         <script src="/TemplatePackage/3.0/js/libs/d3/datamaps.all.min.js"></script>
+        <script src='//tools.cdc.gov/api/embed/html/js/embed-2.0.2.js' ></script>
         <script src="/TemplatePackage/contrib/widgets/tp-widget-common.js"></script>
     </body>
 </html>

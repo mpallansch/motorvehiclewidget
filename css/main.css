@@ -71,11 +71,24 @@ body {
     transform: translateX(-300%);
 }
 
+#page-container.page5 .page {
+    transform: translateX(-400%);
+}
+
 #footer {
     position: absolute;
     height: 20%;
     width: 100%;
     bottom: 0;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-color: white;
 }
 
 .page {
@@ -101,6 +114,8 @@ body {
     height: 80%;
     width: 100%;
     top: 20%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .page-header h2, .page-header h4 {
@@ -116,6 +131,26 @@ body {
 
 #logo {
     height: 45px;
+}
+
+#carousel-dots{
+    
+}
+
+.dot{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: blue;
+}
+
+#carousel-dots.page1 .dot:nth-child(1),
+#carousel-dots.page2 .dot:nth-child(2),
+#carousel-dots.page3 .dot:nth-child(3),
+#carousel-dots.page4 .dot:nth-child(4),
+#carousel-dots.page5 .dot:nth-child(5){
+    background-color: black;
 }
 
 .arrow {

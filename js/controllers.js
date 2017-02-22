@@ -8,6 +8,8 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
         $scope.datasets = ['test/Data_Infographic_Image1-2.csv', 'test/Data_Infographic_Image3-4.csv'];
         $scope.strategies = ['Alcohol Interlocks','Bicycle Helment','In Person Renewal', 'Increased Seat Belt Fine', 'License Plate Impound', 'Limits on Diversion', 'Motorcycle Helmet', 'Primary Enforcement Seat Belt Law', 'Red Light Camera', 'Saturation Patrols', 'Seat Belt Enforcement Campaign', 'Sobriety Checkpoints', 'Speed Camera', 'Vehicle Impoundment'];
         $scope.statecodes = {'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA','Colorado':'CO','Connecticut':'CT','Delaware':'DE','Florida':'FL','Georgia':'GA','Hawaii':'HI','Idaho':'ID','Illinois':'IL','Indiana':'IN','Iowa':'IA','Kansas':'KS','Kentucky':'KY','Louisiana':'LA','Maine':'ME','Maryland':'MD','Massachusetts':'MA','Michigan':'MI','Minnesota':'MN','Mississippi':'MS','Missouri':'MO','Montana':'MT','Nebraska':'NE','Nevada':'NV','New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND','Ohio':'OH','Oklahoma':'OK','Oregon':'OR','Pennsylvania':'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD','Tennessee':'TN','Texas':'TX','Utah':'UT','Vermont':'VT','Virginia':'VA','Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY'};
+        $scope.embedCode = cdcCommon.runtime.embedCode;
+        
         angular.element(window).bind('resize', function() {
 
         });
@@ -77,7 +79,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
                     $scope.pageNumber--;
                 }
             } else if ($(e.target).hasClass('right-arrow') || e.type === 'swipeleft') {
-                if ($scope.pageNumber < 4) {
+                if ($scope.pageNumber < 5) {
                     $scope.pageNumber++;
                 }
             }
