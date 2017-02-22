@@ -139,6 +139,27 @@ body {
     right: 0;
 }
 
+.percentage {
+    float: right;
+}
+
+.sample {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    border: 1px solid black;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+#implemented-sample {
+    background-color: lightblue;
+}
+
+#not-implemented-sample {
+    background-color: khaki;
+}
 
 .darkblue {
     color: white;

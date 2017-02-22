@@ -21,9 +21,9 @@
                             If the following motor vehicle injury prevention strategies where implemented in the state of <strong>{{state}}</strong>...
                         </div>
                         <div class="content-section lightblue">
-                            <ul>
-                                <li data-ng-repeat="strategy in data[state].unimplemented">{{strategy}}</li>
-                            </ul>
+                            <ol>
+                                <li data-ng-repeat="strategy in data[state]['Unimplemented Interventions (Recommended by MV PICCS)']" data-ng-if="strategy">{{strategy}}</li>
+                            </ol>
                         </div>
                         <p>Go to the next screen to see the cost benefit of implementing these strategies.</p>
                     </div>
@@ -32,9 +32,9 @@
                         <h2>{{state}}</h2>
                     </div>
                     <div class="page-content">
-                        <div>Reduced Injuries: {{data[state].totalInjuries | number:0}}</div>
-                        <div>Reduced Deaths: {{data[state].totalDeaths | number: 0}}</div>
-                        <div>Monetary <strong>benefit</strong> of injuries prevented and lives saved<br/>Cost Benefit: ${{data[state].totalBenefit | number:0}}<br/>Cost to implement: ${{data[state].totalCost | number:0}}* <br/>*If costs are offset by fines - approx. ${{data[state].totalCostFines | number:0}}/year</div>
+                        <div>Reduced Injuries: {{data[state]['Total # of Injuries Reduced'] | number:0}}<span class="percentage">{{data[state]['Percent Reduction in Injuries']}}</span></div>
+                        <div>Reduced Deaths: {{data[state]['Total # of Fatalities Reduced'] | number: 0}}<span class="percentage">{{data[state]['Percent Reduction in Fatalities']}}</span></div>
+                        <div>Monetary <strong>benefit</strong> of injuries prevented and lives saved<br/>Cost Benefit: ${{data[state]['Total Benefit'] | number:0}}<br/>Cost to implement: ${{data[state]['Total Cost (w/Fines Excluded)'] | number:0}}* <br/>*If costs are offset by fines - approx. ${{data[state]['Total Cost'] < 0 ? 0 : data[state]['Total Cost'] | number:0}}/year</div>
                         <p>Go to the next screen to see how your state compares in motor vehicle injury prevention strategies nationwide.</p>
                     </div>
                 </div><div id="page3" class="page">
@@ -45,10 +45,14 @@
                         <p><strong>How does your state compare?</strong></p>
                         <p>{{state | uppercase}}</p>
                         <p>Choose an intervention to see individual implementation costs and benefits.</p>
-                        <select data-ng-model="intervention">
-                            <option data-ng-repeat="strategy in strategies" value="{{strategy}}">{{strategy}}</option>
+                        <select data-ng-model="intervention" data-ng-change="drawMap()">
+                            <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
                         </select>
                         <div id="map"></div>
+                        <div id="maplegend">
+                            <span id="implemented-sample" class="sample"></span><span>Implemented</span>
+                            <span id="not-implemented-sample" class="sample"></span><span>Not Implemented</span>
+                        </div>
                     </div>
                 </div><div id="page4" class="page">
                     <div class="page-header darkblue">
@@ -57,7 +61,7 @@
                     <div class="page-content">
                         <div>Reduced Injuries: {{data[state][intervention + ': # of Injuries Reduced'] | number:0}}</div>
                         <div>Reduced Deaths: {{data[state][intervention + ': # of Fatalities Reduced'] | number:0}}</div>
-                        <div>Monetary <strong>benefit</strong> of injuries prevented and lives saved<br/>Cost Benefit: ${{data[state][intervention + ': Benefit $/year'] | number:0}}<br/>Cost to implement: ${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}* <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] | number:0}}/year</div>
+                        <div>Monetary <strong>benefit</strong> of injuries prevented and lives saved<br/>Cost Benefit: ${{data[state][intervention + ': Benefit $/year'] | number:0}}<br/>Cost to implement: ${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}* <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year'] | number:0}}/year</div>
                         <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip">https://wwwn.cdc.gov/mvip</a> to choose your own combination of motor vehicle strategies. Based on your own individualized budget, MV PICCS can also provide a list of recommended strategies to implement in your state.</p>
                     </div>
                 </div>
