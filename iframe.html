@@ -37,10 +37,10 @@
                         <h2>{{state}}<br/>Summary of strategies not implemented.</h2>
                     </div>
                     <div class="page-content lightblue small-font">
-                        <div class="content-section margin-bottom white darkblue-font"><img src="" alt="TODO" class="small-icon"/>Injuries Prevented<br/> <span class="x-large-font">{{data[state]['Total # of Injuries Reduced']| number:0}}</span><span class="percentage">Reduced Injuries<br/><span class="percentage-figure x-large-font"> {{data[state]['Percent Reduction in Injuries']}}</span></span></div>
-                        <div class="content-section margin-bottom white darkblue-font"><img src="" alt="TODO" class="small-icon"/>Lives Saved<br/> <span class="x-large-font">{{data[state]['Total # of Fatalities Reduced']| number: 0}}</span><span class="percentage">Reduced Deaths<br/> <span class="percentage-figure x-large-font"> {{data[state]['Percent Reduction in Fatalities']}}</span></span></div>
-                        <div class="content-section margin-bottom white"><strong>Monetary Benefit</strong> per year<br/>Cost Benefit: ${{data[state]['Total Benefit']| number:0}}<br/>Estimated from injuries prevented and lives saved<br/><strong>Cost to Implement</strong> per year: ${{data[state]['Total Cost (w/Fines Excluded)'] | number:0}}* <br/>*If fines are used - approx. ${{data[state]['Total Cost'] < 0 ? 0 : data[state]['Total Cost']| number:0}}/year <span data-ng-if="data[state]['Total Cost'] < 0"><br/>See MV PICCS for specific cost-related details</span><img src="" alt="TODO"/></div>
-                        <div class="content-section padding white">
+                        <div class="content-section margin-bottom white darkblue-font bold-font"><img src="" alt="TODO" class="small-icon"/>Injuries Prevented<br/> <span class="x-large-font">{{data[state]['Total # of Injuries Reduced']| number:0}}</span><span class="percentage">Reduced Injuries<br/><span class="percentage-figure x-large-font"> {{data[state]['Percent Reduction in Injuries']}}</span></span></div>
+                        <div class="content-section margin-bottom white darkblue-font bold-font"><img src="" alt="TODO" class="small-icon"/>Lives Saved<br/> <span class="x-large-font">{{data[state]['Total # of Fatalities Reduced']| number: 0}}</span><span class="percentage">Reduced Deaths<br/> <span class="percentage-figure x-large-font"> {{data[state]['Percent Reduction in Fatalities']}}</span></span></div>
+                        <div class="content-section margin-bottom white gray-font padding-left"><img class="dollarsign" src="" alt="TODO"/><strong>Monetary Benefit</strong> per year<br/><span class="x-large-font darkblue-font">${{data[state]['Total Benefit']| number:0}}</span><br/>Estimated from injuries prevented and lives saved<br/><br/><strong>Cost to Implement</strong> per year<br/><span class="large-font darkblue-font">${{data[state]['Total Cost (w/Fines Excluded)'] | number:0}}*</span> <br/>*If fines are used - approx. ${{data[state]['Total Cost'] < 0 ? 0 : data[state]['Total Cost']| number:0}}/year <span data-ng-if="data[state]['Total Cost'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
+                        <div class="content-section center-align padding">
                             <p>See how your state compares nationwide.</p>
                         </div>
                     </div>
@@ -48,35 +48,38 @@
                     <div class="page-header darkblue">
                         <h2>How Does Your State Compare?</h2>
                     </div>
-                    <div class="page-content">
+                    <div class="page-content center-align">
                         <p>{{state| uppercase}}</p>
                         <p>Select one strategy. See which states have implemented it on the map below</p>
                         <select data-ng-model="intervention" data-ng-change="drawMap()">
                             <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
                         </select>
                         <div id="map"></div>
-                        <div id="maplegend">
+                        <div id="maplegend" class="small-font">
                             <span id="implemented-sample" class="sample"></span><span>Implemented</span>
                             <span id="not-implemented-sample" class="sample"></span><span>Not Implemented</span>
                         </div>
-                        <p>See the costs and benefits of implementing this strategy on the next screen</p>
+                        <div class="content-section padding small-font">
+                            <p>See the costs and benefits of implementing this strategy on the next screen</p>
+                        </div>
                     </div>
                 </div><div id="page4" class="page">
                     <div class="page-header darkblue">
                         <h4>{{intervention}}<br/>Implementation of this strategy in {{state}}...</h4>
                     </div>
-                    <div class="page-content">
-                        <div><img src="" alt="TODO"/>Injuries Prevented: {{data[state][intervention + ': # of Injuries Reduced']| number:0}}<span class="percentage">Reduced Injuries: {{data[state][intervention + ': Percent Reduction in Injuries']}}</span></div>
-                        <div><img src="" alt="TODO"/>Lives Saved: {{data[state][intervention + ': # of Fatalities Reduced']| number:0}}<span class="percentage">Reduced Deaths: {{data[state][intervention + ': Percent Reduction in Fatalities']}}</span></div>
-                        <div><strong>Monetary Benefit</strong> per year<br/>Cost Benefit: ${{data[state][intervention + ': Benefit $/year']| number:0}}<br/>Estimated from injuries prevented and lives saved<br/><strong>Cost to Implement</strong> per year: ${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}* <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year']| number:0}}/year <span data-ng-if="data[state][intervention + ': Cost $ / year'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
-                        <img src="" alt="TODO"/>
-                        <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip">wwwn.cdc.gov/mvip</a> for a list of recommended strategies to implement based on your state's budget.</p>
+                    <div class="page-content lightblue small-font">
+                        <div class="content-section margin-bottom white darkblue-font bold-font"><img src="" alt="TODO" class="small-icon"/>Injuries Prevented<br/><span class="x-large-font">{{data[state][intervention + ': # of Injuries Reduced']| number:0}}</span><span class="percentage">Reduced Injuries<br/><span class="percentage-figure x-large-font">{{data[state][intervention + ': Percent Reduction in Injuries']}}</span></span></div>
+                        <div class="content-section margin-bottom white darkblue-font bold-font"><img src="" alt="TODO" class="small-icon"/>Lives Saved<br/><span class="x-large-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span><span class="percentage">Reduced Deaths<br/><span class="percentage-figure x-large-font">{{data[state][intervention + ': Percent Reduction in Fatalities']}}</span></span></div>
+                        <div class="content-section margin-bottom white gray-font padding-left"><img class="dollarsign" src="" alt="TODO"/><strong>Monetary Benefit</strong> per year<br/><span class="x-large-font darkblue-font">${{data[state][intervention + ': Benefit $/year']| number:0}}</span><br/>Estimated from injuries prevented and lives saved<br/><br/><strong>Cost to Implement</strong> per year<br/><span class="large-font darkblue-font">${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}*</span> <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year']| number:0}}/year <span data-ng-if="data[state][intervention + ': Cost $ / year'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
+                        <div class="content-section center-align padding-left-right">
+                            <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip">wwwn.cdc.gov/mvip</a> for a list of recommended strategies to implement based on your state's budget.</p>
+                        </div>
                     </div>
                 </div><div id="page5" class="page">
                     <div class="page-header darkblue">
                         <h2>Glossary of Terms</h2>
                     </div>
-                    <div class="page-content">
+                    <div class="page-content padding">
                         <p><strong>Automated Red-Light Enforcement:</strong> red-light cameras that capture an image of a vehicle that runs a red light to detect and prevent red-light runners. </p> 
                         <p><strong>Automated Speed-Camera Enforcement:</strong> speed cameras that capture an image of a vehicle that is speeding to detect and prevent speeders.  </p>
                         <p><strong>Alcohol Interlocks:</strong> a device that keeps the vehicle from starting unless the driver has a blood alcohol concentration below a pre-set limit.</p>
@@ -97,30 +100,37 @@
                 <p data-ng-click="changePage($event)" class="arrow right-arrow" data-ng-show="showArrows && pageNumber < 5">&gt;</p>
             </div>
             <div id="embed-modal" class="modal" data-ng-show="modal === 'embed'">
-                <div class="page-header lightblue">
+                <div class="modal-header darkblue">
                     <h2>Embed</h2>
                 </div>
-                <div class="page-content">
-                    <textarea>{{embedCode}}</textarea>
-                    <a href="#" data-ng-click="modal = false">Back</a>
+                <div class="modal-content">
+                    <p>Copy and paste the code below:</p>
+                    <textarea id="embed-code">{{embedCode}}</textarea>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="back-button darkblue" data-ng-click="modal = false">Back</a>
                 </div>
             </div>
             <div id="disclaimer-modal" class="modal" data-ng-show="modal === 'disclaimer'">
-                <div class="page-header lightblue">
+                <div class="modal-header darkblue">
                     <h2>Disclaimer</h2>
                 </div>
-                <div class="page-content">
+                <div class="modal-content">
                     <div class="rid_5a363e44_131963" data-apiroot="//tools.cdc.gov/api" data-mediatype="html" data-mediaid="131963" data-stripscripts="true" data-stripanchors="false" data-stripimages="false" data-stripcomments="true" data-stripstyles="true" data-ids="mdisclaimer" data-xpath="" data-oe="utf-8" data-of="xhtml" data-ns="cdc" data-postprocess="" data-nw="true"></div>
-                    <a href="#" data-ng-click="modal = false">Back</a>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="back-button darkblue" data-ng-click="modal = false">Back</a>
                 </div>
             </div>
             <div id="info-modal" class="modal" data-ng-show="modal === 'info'">
-                <div class="page-header lightblue">
+                <div class="modal-header darkblue">
                     <h2>Info</h2>
                 </div>
-                <div class="page-content">
+                <div class="modal-content">
                     <div class="rid_7bc9b9c2_131962" data-apiroot="//tools.cdc.gov/api" data-mediatype="html" data-mediaid="131962" data-stripscripts="true" data-stripanchors="false" data-stripimages="false" data-stripcomments="true" data-stripstyles="true" data-ids="mprivacy" data-xpath="" data-oe="utf-8" data-of="xhtml" data-ns="cdc" data-postprocess="" data-nw="true"></div>
-                    <a href="#" data-ng-click="modal = false">Back</a>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="back-button darkblue" data-ng-click="modal = false">Back</a>
                 </div>
             </div>
             <div id="footer" class="lightblue center-align">

@@ -82,7 +82,7 @@ body {
     bottom: 0;
 }
 
-#footer-buttons a {
+#footer-buttons a, .back-button {
     text-decoration: none;
     padding: 5px 10px;
 }
@@ -94,6 +94,46 @@ body {
     width: 100%;
     height: 80%;
     background-color: white;
+}
+
+.modal-header {
+    display: table;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+
+.modal-header h2 {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: normal;
+    margin: 0;
+}
+
+.modal-content {
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    top: 10%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.modal-footer {
+    text-align: center;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    top: 90%;
+}
+
+.modal-footer .back-button {
+    position: relative;
+    top: 15px;
 }
 
 .page {
@@ -128,6 +168,13 @@ body {
     margin-top: 5px;
 }
 
+.page-content select {
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+    width: 200px;
+}
+
 .page-header h2, .page-header h4 {
     display: table-cell;
     vertical-align: middle;
@@ -138,9 +185,18 @@ body {
 #page2 .content-section:nth-child(1),
 #page2 .content-section:nth-child(2),
 #page4 .content-section:nth-child(1),
-#page4 .content-section:nth-child(1){
+#page4 .content-section:nth-child(2){
     position: relative;
-    height: 65px;
+    height: 60px;
+}
+
+#page2 .content-section:nth-child(3),
+#page4 .content-section:nth-child(3){
+    padding-bottom: 5px;
+}
+
+#page5 .page-content {
+    box-sizing: border-box;
 }
 
 .content-section {
@@ -151,15 +207,12 @@ body {
     margin-top: 0;
 }
 
-#state-input {
-    margin: 10px 0;
-    padding: 5px;
-    border-radius: 5px;
-    width: 200px;
+#map {
+    height: 150px;
 }
 
-#map {
-    height: 200px;
+#maplegend {
+    margin-top: 15px;
 }
 
 #intervention-list {
@@ -176,6 +229,11 @@ body {
 
 .intervention-list-item:nth-child(even){
     float: right;
+}
+
+#embed-code {
+    width: 100%;
+    height: 100px;
 }
 
 #logo {    
@@ -228,10 +286,17 @@ body {
     top: 5px;
 }
 
+.dollarsign {
+    float: right;
+    width: 55px;
+    height: 120px;
+    margin: 5px;
+}
+
 .sample {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 2px;
     border: 1px solid black;
     vertical-align: middle;
@@ -254,30 +319,48 @@ body {
     padding: 15px;
 }
 
+.padding-left {
+    padding-left: 15px;
+}
+
 .padding-left-right {
     padding-left: 15px;
     padding-right: 15px;
 }
 
 .margin-bottom {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .small-icon {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     vertical-align: top;
     float: left;
     margin-right: 5px;
+    margin-left: 5px;
 }
 
 .small-font {
     font-size: small;
 }
 
+.large-font {
+    font-weight: bold;
+    font-size: x-large;
+}
+
 .x-large-font {
     font-weight: bold;
     font-size: xx-large;
+}
+
+.bold-font {
+    font-weight: bold;
+}
+
+.gray-font {
+    color: gray;
 }
 
 .darkblue-font {
