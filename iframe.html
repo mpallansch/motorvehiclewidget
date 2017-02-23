@@ -15,7 +15,7 @@
                         <div class="content-section center-align white">
                             <p><strong>What strategies are you missing?</strong></p>
                             <p>Select your state.</p>
-                            <select data-ng-model="state" id="state-input">
+                            <select data-ng-model="state" id="state-input"  data-ng-change="setIntervention()">
                                 <option data-ng-repeat="(st, data) in data" value="{{st}}">{{st}}</option>
                             </select>
                         </div>

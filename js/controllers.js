@@ -58,6 +58,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
             if ($scope.waitingFor === 0) {
                 console.log($scope.data);
                 $scope.loading = false;
+                $scope.setIntervention();
                 $scope.drawMap();
             }
         };
@@ -85,6 +86,15 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
             }
             if (e.type === 'swiperight' || e.type === 'swipeleft') {
                 $scope.$digest();
+            }
+        };
+        
+        $scope.setIntervention = function(){
+            for(var i = 0; i < $scope.strategies.length; i++){
+                if($scope.data[$scope.state][$scope.strategies[i] + ': Intervention Implemented?'] === 'Yes'){
+                    $scope.intervention = $scope.strategies[i];
+                    return;
+                }
             }
         };
 
