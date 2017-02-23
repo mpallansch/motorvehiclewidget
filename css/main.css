@@ -260,7 +260,7 @@ body {
 
 .arrow {
     position: absolute;
-    top: 50%;
+    top: 40%;
     padding: 10px 15px;
     color: white;
     background: rgba(0, 0, 0, .5);
@@ -282,7 +282,7 @@ body {
 .percentage {
     text-align: center;
     position: absolute;
-    right: 0;
+    right: 5px;
     top: 5px;
 }
 
