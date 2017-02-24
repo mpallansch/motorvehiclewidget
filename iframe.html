@@ -7,6 +7,8 @@
     <body data-ng-controller="mainCtrl">
         <div id="content">
             <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" swipe-page>
+                <a data-ng-click="changePage($event)" href="#" class="arrow left-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber > 1}" data-ng-focus="onFocus" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;</a>
+                <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 5}" data-ng-focus="onFocus" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;</a>
                 <div id="page1" class="page lightblue">
                     <div class="page-header darkblue">
                         <h2>Motor Vehicle Injury Prevention: Benefits and Costs by State</h2>
@@ -15,6 +17,7 @@
                         <div class="content-section center-align white">
                             <p><strong>What strategies are you missing?</strong></p>
                             <p>Select your state.</p>
+                            <select data-ng-model="state" id="state-input" data-ng-change="setIntervention()" control-navigation>
                                 <option data-ng-repeat="(st, data) in data" value="{{st}}">{{st}}</option>
                             </select>
                         </div>
@@ -50,6 +53,7 @@
                     <div class="page-content center-align">
                         <p>{{state| uppercase}}</p>
                         <p>Select one strategy. See which states have implemented it on the map below</p>
+                        <select data-ng-model="intervention" data-ng-change="drawMap()" control-navigation>
                             <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
                         </select>
                         <div id="map"></div>
@@ -70,6 +74,7 @@
                         <div class="content-section margin-bottom white darkblue-font bold-font"><img src="" alt="TODO" class="small-icon"/>Lives Saved<br/><span class="x-large-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span><span class="percentage">Reduced Deaths<br/><span class="percentage-figure x-large-font">{{data[state][intervention + ': Percent Reduction in Fatalities']}}</span></span></div>
                         <div class="content-section margin-bottom white gray-font padding-left"><strong>Monetary Benefit</strong> per year<br/><span class="x-large-font darkblue-font">${{data[state][intervention + ': Benefit $/year']| number:0}}</span><img class="dollarsign" src="" alt="TODO"/><br/>Estimated from injuries prevented and lives saved<br/><br/><strong>Cost to Implement</strong> per year<br/><span class="large-font darkblue-font">${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}*</span> <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year']| number:0}}/year <span data-ng-if="data[state][intervention + ': Cost $ / year'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
                         <div class="content-section center-align padding-left-right">
+                            <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip" control-navigation>wwwn.cdc.gov/mvip</a> for a list of recommended strategies to implement based on your state's budget.</p>
                         </div>
                     </div>
                 </div><div id="page5" class="page">
