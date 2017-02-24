@@ -270,6 +270,8 @@ body {
     margin-bottom: 25px;
     user-select: none;
     cursor: pointer;
+    z-index: 2;
+    text-decoration: none;
 }
 
 .left-arrow {
@@ -383,4 +385,12 @@ body {
 
 .white {
     background-color: white;
+}
+
+.accessible-hide {
+    transition: trasform;
+    transform: translateY(-1000px);
+}
+.accessible-show {
+    transform: none;
 }

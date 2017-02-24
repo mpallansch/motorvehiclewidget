@@ -2,20 +2,21 @@ var motorVehiclesControllers = angular.module('motorVehiclesControllers', []);
 
 motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
         $scope.loading = true;
+        $scope.showArrows = false;
         $scope.pageNumber = 1;
         $scope.intervention = 'Alcohol Interlocks';
         $scope.datasets = ['test/Data_Infographic_Image1-2.csv', 'test/Data_Infographic_Image3-4.csv'];
-        $scope.strategies = ['Alcohol Interlocks','Bicycle Helment','In Person Renewal', 'Increased Seat Belt Fine', 'License Plate Impound', 'Limits on Diversion', 'Motorcycle Helmet', 'Primary Enforcement Seat Belt Law', 'Red Light Camera', 'Saturation Patrols', 'Seat Belt Enforcement Campaign', 'Sobriety Checkpoints', 'Speed Camera', 'Vehicle Impoundment'];
-        $scope.strategiesFull = {'Alcohol Interlocks': 'Alcohol Interlocks','Bicycle Helment':'Bicycle Helmet Laws for Children','In Person Renewal':'In Person License Renewal', 'Increased Seat Belt Fine':'Increased Fines for Seat Belt Use', 'License Plate Impound':'License Plate Impoundment', 'Limits on Diversion':'Limits on Diversion and Plea Agreements', 'Motorcycle Helmet':'Universal Motorcycle Helmet Laws', 'Primary Enforcement Seat Belt Law':'Primary Enforcement of Seat Belt Laws', 'Red Light Camera':'Automated Red-Light Enforcement', 'Saturation Patrols':'Saturation Patrols', 'Seat Belt Enforcement Campaign':'High-Visibility Enforcement for Seat Belts and Child Restraint and Booster Laws', 'Sobriety Checkpoints':'Sobriety Checkpoints', 'Speed Camera':'Automated Speed-Camera Enforcement', 'Vehicle Impoundment':'Vehicle Impoundment'};
-        $scope.statecodes = {'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA','Colorado':'CO','Connecticut':'CT','Delaware':'DE','Florida':'FL','Georgia':'GA','Hawaii':'HI','Idaho':'ID','Illinois':'IL','Indiana':'IN','Iowa':'IA','Kansas':'KS','Kentucky':'KY','Louisiana':'LA','Maine':'ME','Maryland':'MD','Massachusetts':'MA','Michigan':'MI','Minnesota':'MN','Mississippi':'MS','Missouri':'MO','Montana':'MT','Nebraska':'NE','Nevada':'NV','New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND','Ohio':'OH','Oklahoma':'OK','Oregon':'OR','Pennsylvania':'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD','Tennessee':'TN','Texas':'TX','Utah':'UT','Vermont':'VT','Virginia':'VA','Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY'};
+        $scope.strategies = ['Alcohol Interlocks', 'Bicycle Helment', 'In Person Renewal', 'Increased Seat Belt Fine', 'License Plate Impound', 'Limits on Diversion', 'Motorcycle Helmet', 'Primary Enforcement Seat Belt Law', 'Red Light Camera', 'Saturation Patrols', 'Seat Belt Enforcement Campaign', 'Sobriety Checkpoints', 'Speed Camera', 'Vehicle Impoundment'];
+        $scope.strategiesFull = {'Alcohol Interlocks': 'Alcohol Interlocks', 'Bicycle Helment': 'Bicycle Helmet Laws for Children', 'In Person Renewal': 'In Person License Renewal', 'Increased Seat Belt Fine': 'Increased Fines for Seat Belt Use', 'License Plate Impound': 'License Plate Impoundment', 'Limits on Diversion': 'Limits on Diversion and Plea Agreements', 'Motorcycle Helmet': 'Universal Motorcycle Helmet Laws', 'Primary Enforcement Seat Belt Law': 'Primary Enforcement of Seat Belt Laws', 'Red Light Camera': 'Automated Red-Light Enforcement', 'Saturation Patrols': 'Saturation Patrols', 'Seat Belt Enforcement Campaign': 'High-Visibility Enforcement for Seat Belts and Child Restraint and Booster Laws', 'Sobriety Checkpoints': 'Sobriety Checkpoints', 'Speed Camera': 'Automated Speed-Camera Enforcement', 'Vehicle Impoundment': 'Vehicle Impoundment'};
+        $scope.statecodes = {'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA', 'Colorado': 'CO', 'Connecticut': 'CT', 'Delaware': 'DE', 'Florida': 'FL', 'Georgia': 'GA', 'Hawaii': 'HI', 'Idaho': 'ID', 'Illinois': 'IL', 'Indiana': 'IN', 'Iowa': 'IA', 'Kansas': 'KS', 'Kentucky': 'KY', 'Louisiana': 'LA', 'Maine': 'ME', 'Maryland': 'MD', 'Massachusetts': 'MA', 'Michigan': 'MI', 'Minnesota': 'MN', 'Mississippi': 'MS', 'Missouri': 'MO', 'Montana': 'MT', 'Nebraska': 'NE', 'Nevada': 'NV', 'New Hampshire': 'NH', 'New Jersey': 'NJ', 'New Mexico': 'NM', 'New York': 'NY', 'North Carolina': 'NC', 'North Dakota': 'ND', 'Ohio': 'OH', 'Oklahoma': 'OK', 'Oregon': 'OR', 'Pennsylvania': 'PA', 'Rhode Island': 'RI', 'South Carolina': 'SC', 'South Dakota': 'SD', 'Tennessee': 'TN', 'Texas': 'TX', 'Utah': 'UT', 'Vermont': 'VT', 'Virginia': 'VA', 'Washington': 'WA', 'West Virginia': 'WV', 'Wisconsin': 'WI', 'Wyoming': 'WY'};
         $scope.embedCode = cdcCommon.runtime.embedCode;
-        
-        if($scope.statecodes[cdcCommon.getCallParam('defaultState')]){
+
+        if ($scope.statecodes[cdcCommon.getCallParam('defaultState')]) {
             $scope.state = cdcCommon.getCallParam('defaultState');
         } else {
             $scope.state = 'Alabama';
         }
-        
+
         angular.element(window).bind('resize', function() {
 
         });
@@ -38,7 +39,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
 
                 for (var j = 0; j < values.length; j++) {
                     if (props[j]) {
-                        switch(props[j]){
+                        switch (props[j]) {
                             case 'Unimplemented Interventions (Recommended by MV PICCS)':
                                 obj[props[j]] = values[j].split(/[0-9]\./);
                                 break;
@@ -48,18 +49,18 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
                         }
                     }
                 }
-                
+
                 if (obj['State']) {
-                    if($scope.data[obj['State']]){
+                    if ($scope.data[obj['State']]) {
                         jQuery.extend($scope.data[obj['State']], obj);
                     } else {
                         $scope.data[obj['State']] = obj;
                     }
-                    
+
                 }
             }
-            
-            
+
+
             $scope.waitingFor--;
             if ($scope.waitingFor === 0) {
                 console.log($scope.data);
@@ -78,7 +79,17 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
             $http.get(url).then($scope.processData, $scope.handleErr);
         });
 
-
+        $scope.findParentPageNumber = function(element) {
+            if (element.parentElement) {
+                if ($(element.parentElement).hasClass('page')) {
+                    return parseInt(element.parentElement.id.replace('page', ''));
+                } else {
+                    return $scope.findParentPageNumber(element.parentElement);
+                }
+            } else {
+                return undefined;
+            }
+        };
 
         $scope.changePage = function(e) {
             if ($(e.target).hasClass('left-arrow') || e.type === 'swiperight') {
@@ -94,10 +105,10 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
                 $scope.$digest();
             }
         };
-        
-        $scope.setIntervention = function(){
-            for(var i = 0; i < $scope.strategies.length; i++){
-                if($scope.data[$scope.state][$scope.strategies[i] + ': Intervention Implemented?'] === 'Yes'){
+
+        $scope.setIntervention = function() {
+            for (var i = 0; i < $scope.strategies.length; i++) {
+                if ($scope.data[$scope.state][$scope.strategies[i] + ': Intervention Implemented?'] === 'Yes') {
                     $scope.intervention = $scope.strategies[i];
                     return;
                 }
@@ -106,15 +117,15 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
 
         $scope.drawMap = function() {
             $scope.mapData = {};
-            for(state in $scope.data){
-                if($scope.data[state][$scope.intervention + ': Intervention Implemented?'] === 'Yes'){
+            for (state in $scope.data) {
+                if ($scope.data[state][$scope.intervention + ': Intervention Implemented?'] === 'Yes') {
                     $scope.mapData[$scope.statecodes[state]] = {fillKey: 'implemented'};
                 }
             }
-            
+
             console.log($scope.mapData);
             $('#map').empty();
-            
+
             $scope.map = new Datamap({
                 scope: 'usa',
                 element: document.getElementById('map'),
@@ -128,6 +139,24 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', function($sc
             });
         };
 
+    }]);
+
+motorVehiclesControllers.directive('controlNavigation', [function() {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attr) {
+                element.bind('focus', function(e) {
+                    if ($(e.target).hasClass('arrow')) {
+                        scope.showArrows = true;
+                    }
+                    $('#page-container')[0].scrollLeft = 0;
+                    var pagenum = scope.findParentPageNumber(e.target);
+                    scope.pageNumber = pagenum || scope.pageNumber;
+                    scope.$digest();
+                });
+
+            }
+        };
     }]);
 
 motorVehiclesControllers.directive('swipePage', [function() {

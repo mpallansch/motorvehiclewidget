@@ -15,7 +15,6 @@
                         <div class="content-section center-align white">
                             <p><strong>What strategies are you missing?</strong></p>
                             <p>Select your state.</p>
-                            <select data-ng-model="state" id="state-input"  data-ng-change="setIntervention()">
                                 <option data-ng-repeat="(st, data) in data" value="{{st}}">{{st}}</option>
                             </select>
                         </div>
@@ -51,7 +50,6 @@
                     <div class="page-content center-align">
                         <p>{{state| uppercase}}</p>
                         <p>Select one strategy. See which states have implemented it on the map below</p>
-                        <select data-ng-model="intervention" data-ng-change="drawMap()">
                             <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
                         </select>
                         <div id="map"></div>
@@ -72,7 +70,6 @@
                         <div class="content-section margin-bottom white darkblue-font bold-font"><img src="" alt="TODO" class="small-icon"/>Lives Saved<br/><span class="x-large-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span><span class="percentage">Reduced Deaths<br/><span class="percentage-figure x-large-font">{{data[state][intervention + ': Percent Reduction in Fatalities']}}</span></span></div>
                         <div class="content-section margin-bottom white gray-font padding-left"><strong>Monetary Benefit</strong> per year<br/><span class="x-large-font darkblue-font">${{data[state][intervention + ': Benefit $/year']| number:0}}</span><img class="dollarsign" src="" alt="TODO"/><br/>Estimated from injuries prevented and lives saved<br/><br/><strong>Cost to Implement</strong> per year<br/><span class="large-font darkblue-font">${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}*</span> <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year']| number:0}}/year <span data-ng-if="data[state][intervention + ': Cost $ / year'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
                         <div class="content-section center-align padding-left-right">
-                            <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip">wwwn.cdc.gov/mvip</a> for a list of recommended strategies to implement based on your state's budget.</p>
                         </div>
                     </div>
                 </div><div id="page5" class="page">
@@ -96,8 +93,6 @@
                         <p><strong>Increased Fines for Seat Belt Use:</strong> higher penalties for seat belt use violations. Low fines may not convince non-users to buckle up and may send a message that seat belt use laws are not taken seriously.</p>
                     </div>
                 </div>
-                <p data-ng-click="changePage($event)" class="arrow left-arrow" data-ng-show="showArrows && pageNumber > 1">&lt;</p>
-                <p data-ng-click="changePage($event)" class="arrow right-arrow" data-ng-show="showArrows && pageNumber < 5">&gt;</p>
             </div>
             <div id="embed-modal" class="modal" data-ng-show="modal === 'embed'">
                 <div class="modal-header darkblue">
