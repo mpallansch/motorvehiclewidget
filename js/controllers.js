@@ -6,26 +6,21 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
         $scope.strategiesFull = {'Alcohol Interlocks': 'Alcohol Interlocks', 'Bicycle Helment': 'Bicycle Helmet Laws for Children', 'In Person Renewal': 'In Person License Renewal', 'Increased Seat Belt Fine': 'Increased Fines for Seat Belt Use', 'License Plate Impound': 'License Plate Impoundment', 'Limits on Diversion': 'Limits on Diversion and Plea Agreements', 'Motorcycle Helmet': 'Universal Motorcycle Helmet Laws', 'Primary Enforcement Seat Belt Law': 'Primary Enforcement of Seat Belt Laws', 'Red Light Camera': 'Automated Red-Light Enforcement', 'Saturation Patrols': 'Saturation Patrols', 'Seat Belt Enforcement Campaign': 'High-Visibility Enforcement for Seat Belts and Child Restraint and Booster Laws', 'Sobriety Checkpoints': 'Sobriety Checkpoints', 'Speed Camera': 'Automated Speed-Camera Enforcement', 'Vehicle Impoundment': 'Vehicle Impoundment'};
         $scope.statecodes = {'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA', 'Colorado': 'CO', 'Connecticut': 'CT', 'Delaware': 'DE', 'Florida': 'FL', 'Georgia': 'GA', 'Hawaii': 'HI', 'Idaho': 'ID', 'Illinois': 'IL', 'Indiana': 'IN', 'Iowa': 'IA', 'Kansas': 'KS', 'Kentucky': 'KY', 'Louisiana': 'LA', 'Maine': 'ME', 'Maryland': 'MD', 'Massachusetts': 'MA', 'Michigan': 'MI', 'Minnesota': 'MN', 'Mississippi': 'MS', 'Missouri': 'MO', 'Montana': 'MT', 'Nebraska': 'NE', 'Nevada': 'NV', 'New Hampshire': 'NH', 'New Jersey': 'NJ', 'New Mexico': 'NM', 'New York': 'NY', 'North Carolina': 'NC', 'North Dakota': 'ND', 'Ohio': 'OH', 'Oklahoma': 'OK', 'Oregon': 'OR', 'Pennsylvania': 'PA', 'Rhode Island': 'RI', 'South Carolina': 'SC', 'South Dakota': 'SD', 'Tennessee': 'TN', 'Texas': 'TX', 'Utah': 'UT', 'Vermont': 'VT', 'Virginia': 'VA', 'Washington': 'WA', 'West Virginia': 'WV', 'Wisconsin': 'WI', 'Wyoming': 'WY'};
         $scope.embedCode = cdcCommon.runtime.embedCode;
-
-        angular.element(window).bind('resize', function() {
-
-        });
         
         $scope.init = function(){
             $scope.loading = true;
+            $scope.error = false;
             $scope.showArrows = false;
             $scope.pageNumber = 1;
-            $scope.intervention = 'Alcohol Interlocks';
-        
-            if ($scope.statecodes[$window.cdcCommon.getCallParam('defaultState')]) {
+            $scope.state = 'Alabama';
+            
+            if ($window.cdcCommon.getCallParam('defaultState') && $scope.statecodes[$window.cdcCommon.getCallParam('defaultState')]) {
                 $scope.state = $window.cdcCommon.getCallParam('defaultState');
-            } else {
-                $scope.state = 'Alabama';
             }
             
             $scope.waitingFor = $scope.datasets.length;
-            $scope.datasets.forEach(function(url, index) {
-                $http.get(url).then($scope.processData, $scope.handleErr);
+            $scope.datasets.forEach(function(url) {
+                $http.get(url).then($scope.processData, $scope.handleError);
             });
             
             $window.cdcCommon.metrics.trackEvent('Widget Load');
@@ -33,6 +28,10 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
         };
 
         $scope.processData = function(response) {
+            if($scope.error){
+                return;
+            }
+            
             var lines = response.data.split('\n');
             var props = lines[0].split(',');
 
@@ -63,7 +62,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
 
                 if (obj['State']) {
                     if ($scope.data[obj['State']]) {
-                        jQuery.extend($scope.data[obj['State']], obj);
+                        $.extend($scope.data[obj['State']], obj);
                     } else {
                         $scope.data[obj['State']] = obj;
                     }
@@ -71,18 +70,18 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                 }
             }
 
-
             $scope.waitingFor--;
             if ($scope.waitingFor === 0) {
-                console.log($scope.data);
                 $scope.loading = false;
+                
                 $scope.setIntervention();
                 $scope.drawMap();
             }
         };
 
         $scope.handleError = function() {
-
+            $scope.loading = false;
+            $scope.error = true;
         };
 
         $scope.findParentPageNumber = function(element) {
@@ -138,8 +137,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                     $scope.mapData[$scope.statecodes[state]] = {fillKey: 'implemented'};
                 }
             }
-
-            console.log($scope.mapData);
+            
             $('#map').empty();
 
             $scope.map = new Datamap({
@@ -161,32 +159,4 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
         
         $scope.init();
 
-    }]);
-
-motorVehiclesControllers.directive('controlNavigation', [function() {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attr) {
-                element.bind('focus', function(e) {
-                    if ($(e.target).hasClass('arrow')) {
-                        scope.showArrows = true;
-                    }
-                    $('#page-container')[0].scrollLeft = 0;
-                    var pagenum = scope.findParentPageNumber(e.target);
-                    scope.pageNumber = pagenum || scope.pageNumber;
-                    scope.$digest();
-                });
-
-            }
-        };
-    }]);
-
-motorVehiclesControllers.directive('swipePage', [function() {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attr) {
-                $(element).on('swipeleft', scope.changePage);
-                $(element).on('swiperight', scope.changePage);
-            }
-        };
     }]);

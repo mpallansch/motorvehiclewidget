@@ -1,4 +1,4 @@
-#loading-modal {
+#loading-modal, #error-modal {
     display: table;
     position: absolute;
     top: 0;
@@ -11,7 +11,11 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#loading-modal p {
+#error-modal {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#loading-modal p, #error-modal p {
     display: table-cell;
     vertical-align: middle;
 }

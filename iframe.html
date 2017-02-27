@@ -18,7 +18,7 @@
                             <p><strong>What strategies are you missing?</strong></p>
                             <p>Select your state.</p>
                             <select data-ng-model="state" id="state-input" data-ng-change="setIntervention()" control-navigation>
-                                <option data-ng-repeat="(st, data) in data" value="{{st}}">{{st}}</option>
+                                <option data-ng-repeat="(st, value) in data">{{st}}</option>
                             </select>
                         </div>
                         <div class="content-section darkblue padding">
@@ -155,9 +155,10 @@
         <div id="loading-modal" data-ng-show="loading">
             <p><svg><circle cx="50" cy="50" r="45" fill="transparent" stroke="#000000" stroke-width="10px" /></svg></p>
         </div>
-        <!--<script src="/TemplatePackage/contrib/libs/angular/1.4.3/angular.min.js"></script>-->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
-
+        <div id="error-modal" data-ng-show="error" data-ng-cloak>
+            <p>Error loading data, please try again</p>
+        </div>
+        <script src="/TemplatePackage/contrib/libs/angular/1.4.3/angular.min.js"></script>
         <script src="/TemplatePackage/contrib/libs/angular/1.4.3/angular-route.min.js"></script>
         <script src="/TemplatePackage/contrib/libs/jquery/jquery-1.11.2.min.js"></script>
         <script src="/TemplatePackage/3.0/js/libs/jquery.mobile.custom.min.js"></script>
