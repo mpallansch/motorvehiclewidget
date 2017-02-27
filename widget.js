@@ -11,7 +11,7 @@
 		window.cdcMetrics = window.cdcCommon.metrics;
 
 		var objMetricsParams = {
-			c32 : 'widget-117',
+			c32 : 'widget-200',
 			useMetrics : false
 		};
 
@@ -19,7 +19,7 @@
 		cdcMetrics.init(objMetricsParams);
 
 		// SETUP EMBED CODE (widgetName, [array of params to include in embed generation])
-		cdcCommon.createEmbedCode(cdcCommon.getCallParam('wn'),['data-news-feed','data-news-feed-type','data-photos-feed','data-photos-feed-type','data-widget-min-width','data-widget-max-width', 'data-widget-max-height','data-style-path']);
+		cdcCommon.createEmbedCode(cdcCommon.getCallParam('wn'),['data-default-state']);
 
 		// LOAD CONTROLLERS
 		cdcCommon.loadScript('./js/controllers.js', function(){

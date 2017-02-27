@@ -74,7 +74,7 @@
                         <div class="content-section margin-bottom white darkblue-font bold-font"><img src="" alt="TODO" class="small-icon"/>Lives Saved<br/><span class="x-large-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span><span class="percentage">Reduced Deaths<br/><span class="percentage-figure x-large-font">{{data[state][intervention + ': Percent Reduction in Fatalities']}}</span></span></div>
                         <div class="content-section margin-bottom white gray-font padding-left"><strong>Monetary Benefit</strong> per year<br/><span class="x-large-font darkblue-font">${{data[state][intervention + ': Benefit $/year']| number:0}}</span><img class="dollarsign" src="" alt="TODO"/><br/>Estimated from injuries prevented and lives saved<br/><br/><strong>Cost to Implement</strong> per year<br/><span class="large-font darkblue-font">${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}*</span> <br/>*If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year']| number:0}}/year <span data-ng-if="data[state][intervention + ': Cost $ / year'] < 0"><br/>See MV PICCS for specific cost-related details</span></div>
                         <div class="content-section center-align padding-left-right">
-                            <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip" control-navigation>wwwn.cdc.gov/mvip</a> for a list of recommended strategies to implement based on your state's budget.</p>
+                            <p>Visit <a target="_blank" href="https://wwwn.cdc.gov/mvip" data-ng-click="trackLink('MV PICCS')" control-navigation>wwwn.cdc.gov/mvip</a> for a list of recommended strategies to implement based on your state's budget.</p>
                         </div>
                     </div>
                 </div><div id="page5" class="page">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <div id="embed-modal" class="modal" data-ng-show="modal === 'embed'">
+            <div id="embed-modal" class="modal" data-ng-show="modal === 'Embed'">
                 <div class="modal-header darkblue">
                     <h2>Embed</h2>
                 </div>
@@ -111,7 +111,7 @@
                     <a href="#" class="back-button darkblue" data-ng-click="modal = false">Back</a>
                 </div>
             </div>
-            <div id="disclaimer-modal" class="modal" data-ng-show="modal === 'disclaimer'">
+            <div id="disclaimer-modal" class="modal" data-ng-show="modal === 'Disclaimer'">
                 <div class="modal-header darkblue">
                     <h2>Disclaimer</h2>
                 </div>
@@ -122,7 +122,7 @@
                     <a href="#" class="back-button darkblue" data-ng-click="modal = false">Back</a>
                 </div>
             </div>
-            <div id="info-modal" class="modal" data-ng-show="modal === 'info'">
+            <div id="info-modal" class="modal" data-ng-show="modal === 'Info'">
                 <div class="modal-header darkblue">
                     <h2>Info</h2>
                 </div>
@@ -142,11 +142,11 @@
                     <span class="dot"></span>
                 </div>
                 <div id="footer-buttons" class="padding">
-                    <a class="darkblue" href="#" data-ng-click="modal = 'embed'">Embed</a>
-                    <a class="darkblue" href="#" data-ng-click="modal = 'disclaimer'">Disclaimer</a>
-                    <a class="darkblue" href="#" data-ng-click="modal = 'info'">Info</a>
+                    <a class="darkblue" href="#" data-ng-click="changeModal('Embed')">Embed</a>
+                    <a class="darkblue" href="#" data-ng-click="changeModal('Disclaimer')">Disclaimer</a>
+                    <a class="darkblue" href="#" data-ng-click="changeModal('Info')">Info</a>
                 </div>
-                <a target="_blank" href="https://www.cdc.gov">
+                <a target="_blank" href="https://www.cdc.gov" data-ng-click="trackLink('CDC Logo')">
                     <img id="logo" src="/TemplatePackage/contrib/widgets/images/cdc_badge.png" alt="CDC Logo" />
                 </a>
             </div>
