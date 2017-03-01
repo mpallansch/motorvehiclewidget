@@ -300,6 +300,17 @@ body {
     top: 5px;
 }
 
+.percentage-figure {
+    display: block;
+    width: 95px;
+    height: 43px;
+}
+
+.percentage-figure .small-font {
+    position: relative;
+    bottom: 12px;
+}
+
 .dollarsign {
     float: right;
     width: 60px;
@@ -438,6 +449,12 @@ body {
 .sprite.exclamation {
     background-size: 771px 40px;
     background-position-x: 40px;
+}
+
+.sprite.percentage-figure {
+    background-size: 1900px 75px;
+    background-position-x: 295px;
+    background-position-y: -20px;
 }
 
 .sprite.bicycle-helmet {
