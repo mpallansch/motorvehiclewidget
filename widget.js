@@ -10,7 +10,7 @@
 
         var objMetricsParams = {
             c32: 'widget-200',
-            useMetrics: false
+            useMetrics: 'true'
         };
 
         cdcMetrics.init(objMetricsParams);
