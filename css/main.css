@@ -408,7 +408,7 @@ body {
 }
 
 .lightblue {
-    background-color: rgb(225, 225, 255);
+    background-image: url(../img/background.png);
 }
 
 .white {
