@@ -146,6 +146,7 @@ body {
     height: 80%;
     white-space: normal;
     transition: transform 1s ease-in-out;
+    cursor: context-menu;
 }
 
 .page-header {
