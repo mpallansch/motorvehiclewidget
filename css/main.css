@@ -212,6 +212,10 @@ body {
     margin-top: 0;
 }
 
+.below-state {
+    font-size: 15px;
+}
+
 #map {
     height: 150px;
     max-width: 300px;

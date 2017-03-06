@@ -53,7 +53,7 @@
                     </div>
                     <div class="page-content center-align">
                         <p><strong>{{state| uppercase}}</strong></p>
-                        <p>Select one strategy. See which states have implemented it on the map below</p>
+                        <p class="below-state">Select one strategy. See which states have implemented it on the map below</p>
                         <select data-ng-model="intervention" data-ng-change="drawMap()" control-navigation>
                             <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
                         </select>
