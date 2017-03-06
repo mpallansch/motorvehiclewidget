@@ -261,13 +261,16 @@ body {
 }
 
 .intervention-list-item {
-    width: 50%;
+    width: 48%;
     float: left;
     margin: 5px 0px;
     font-size: 12px;
+    height: 25px;
 }
 
 .intervention-list-item:nth-child(even){
+    position: relative;
+    left: 10px;
     float: right;
 }
 
