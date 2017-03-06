@@ -23,6 +23,12 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                 $http.get(url).then($scope.processData, $scope.handleError);
             });
             
+            $('a').bind('click',function(e){
+                if(e.target.getAttribute('href') === '#'){
+                    e.preventDefault();
+                }
+            });
+            
             $window.cdcCommon.metrics.trackEvent('Widget Load');
             $window.cdcCommon.metrics.trackEvent('Page 1');
         };
