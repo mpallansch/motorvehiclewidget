@@ -146,7 +146,7 @@ body {
     height: 80%;
     white-space: normal;
     transition: transform 1s ease-in-out;
-    cursor: context-menu;
+    cursor: default;
 }
 
 .page-header {
@@ -175,8 +175,36 @@ body {
 .page-content select {
     margin: 10px 0;
     padding: 7px;
+    border: 1px solid gray;
     border-radius: 5px;
     width: 250px;
+    height: 35px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 250px;
+    margin: auto;
+}
+
+.select-arrow {
+    position: absolute;
+    top: 10px;
+    line-height: 18px;
+    width: 30px;
+    right: 0;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border: 1px solid gray;
+    border-right: none;
+    font-size: 30px;
+    padding-top: 15px;
+    transform: rotate(180deg);
+    pointer-events: none; 
 }
 
 .page-header h2 {

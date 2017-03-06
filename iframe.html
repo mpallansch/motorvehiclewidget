@@ -17,9 +17,12 @@
                         <div class="content-section center-align white">
                             <p><strong>What strategies are you missing?</strong></p>
                             <p>Select your state.</p>
-                            <select data-ng-model="state" id="state-input" data-ng-change="setIntervention()" control-navigation>
-                                <option data-ng-repeat="(st, value) in data">{{st}}</option>
-                            </select>
+                            <div class="select-wrapper">
+                                <select data-ng-model="state" id="state-input" data-ng-change="setIntervention()" control-navigation>
+                                    <option data-ng-repeat="(st, value) in data">{{st}}</option>
+                                </select>
+                                <div class="select-arrow lightblue darkblue-font" data-ng-click="openSelect($event)">^</div>
+                            </div>
                         </div>
                         <div class="content-section darkblue padding">
                             If the following strategies where implemented in your state....
@@ -54,9 +57,12 @@
                     <div class="page-content center-align">
                         <p><strong>{{state| uppercase}}</strong></p>
                         <p class="below-state">Select one strategy. See which states have implemented it on the map below</p>
-                        <select data-ng-model="intervention" data-ng-change="drawMap()" control-navigation>
-                            <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
-                        </select>
+                        <div class="select-wrapper">
+                            <select data-ng-model="intervention" data-ng-change="drawMap()" control-navigation>
+                                <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
+                            </select>
+                            <div class="select-arrow lightblue darkblue-font" data-ng-click="openSelect($event)">^</div>
+                        </div>
                         <div id="map"></div>
                         <div id="maplegend" class="small-font">
                             <span id="implemented-sample" class="sample"></span><span>Implemented</span>
