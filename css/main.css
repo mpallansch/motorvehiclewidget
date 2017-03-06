@@ -179,11 +179,12 @@ body {
     width: 200px;
 }
 
-.page-header h2, .page-header h4 {
+.page-header h2 {
     display: table-cell;
     vertical-align: middle;
     font-weight: normal;
     margin: 0;
+    font-size: 20px;
 }
 
 #page2 .content-section:nth-child(1),
@@ -378,6 +379,10 @@ body {
 
 .small-font {
     font-size: small;
+}
+
+.small-header-font {
+    font-size: 17px;
 }
 
 .large-font {
