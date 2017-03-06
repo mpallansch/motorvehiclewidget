@@ -9,7 +9,7 @@
             <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" swipe-page>
                 <a data-ng-click="changePage($event)" href="#" class="arrow left-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber > 1}" data-ng-focus="onFocus" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;</a>
                 <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 5}" data-ng-focus="onFocus" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;</a>
-                <div id="page1" class="page lightblue">
+                <div id="page1" class="page">
                     <div class="page-header darkblue">
                         <h2>Motor Vehicle Injury Prevention: Benefits and Costs by State</h2>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="content-section darkblue padding">
                             If the following strategies where implemented in your state....
                         </div>
-                        <div class="content-section">
+                        <div class="content-section lightblue">
                             <ul id="intervention-list" class="small-font">
                                 <li class="intervention-list-item" data-ng-repeat="strategy in data[state]['Unimplemented Interventions (Recommended by MV PICCS)'] | limitTo:8" data-ng-if="strategy">{{strategy}}</li>
                                 <li class="intervention-list-item" data-ng-show="data[state]['Unimplemented Interventions (Recommended by MV PICCS)'].length > 8">And more...</li>
