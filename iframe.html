@@ -74,7 +74,7 @@
                     </div>
                 </div><div id="page4" class="page">
                     <div class="page-header darkblue">
-                        <h2>{{strategiesFull[intervention]}}<br/><span class="small-header-font">Implementation of this strategy in {{state}}...</span></h2><div id="intervention-icon" class="sprite {{intervention | classify}}"><span class="accessible-hide">{{intervention}}</span></div>
+                        <h2>{{strategiesFull[intervention]}}<br/><span class="small-header-font">Implementation of this strategy in {{state === "District of Columbia" ? "D.C" : state}}...</span></h2><div id="intervention-icon" class="sprite {{intervention | classify}}"><span class="accessible-hide">{{intervention}}</span></div>
                     </div>
                     <div class="page-content lightblue small-font">
                         <div class="content-section margin-bottom white darkblue-font bold-font"><div class="small-icon sprite injuries"><span class="accessible-hide">Picture of an injured person</span></div>Injuries Prevented<br/><span class="x-large-font">{{data[state][intervention + ': # of Injuries Reduced']| number:0}}</span><span class="percentage">Reduced Injuries<br/><span class="percentage-figure sprite x-large-font sprite">-{{data[state][intervention + ': Percent Reduction in Injuries']}}<span class="small-font">%</span></span></span></div>
