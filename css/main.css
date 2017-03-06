@@ -45,7 +45,7 @@ html, body {
 
 body {
     font-family: sans-serif;
-    min-width: 300px;
+    min-width: 284px;
 }
 
 #content {
@@ -264,6 +264,7 @@ body {
     width: 50%;
     float: left;
     margin: 5px 0px;
+    font-size: 12px;
 }
 
 .intervention-list-item:nth-child(even){
@@ -279,6 +280,10 @@ body {
     width: 66px;
     height: 66px;
     margin: 15px 15px 0px 5px;
+}
+
+.mvpiccs-footnote {
+    font-size: 12px;
 }
 
 #embed-code {
@@ -410,7 +415,6 @@ body {
     height: 55px;
     vertical-align: top;
     float: left;
-    margin-right: 5px;
     margin-left: 5px;
 }
 
