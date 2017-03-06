@@ -26,8 +26,8 @@
                         </div>
                         <div class="content-section lightblue">
                             <ul id="intervention-list" class="small-font">
-                                <li class="intervention-list-item" data-ng-repeat="strategy in data[state]['Unimplemented Interventions (Recommended by MV PICCS)'] | limitTo:8" data-ng-if="strategy">{{strategy}}</li>
-                                <li class="intervention-list-item" data-ng-show="data[state]['Unimplemented Interventions (Recommended by MV PICCS)'].length > 8">And more...</li>
+                                <li class="intervention-list-item" data-ng-repeat="strategy in data[state]['Unimplemented Interventions (Recommended by MV PICCS)'] | limitTo:8" data-ng-if="strategy"><span>{{strategy}}</span></li>
+                                <li class="intervention-list-item" data-ng-show="data[state]['Unimplemented Interventions (Recommended by MV PICCS)'].length > 8"><span>And more...</span></li>
                             </ul>
                             <span data-ng-if="data[state]['Notation: Some strategies not included because of cost - effectiveness.'] === 'Yes'">*Some MV PICCS strategies were not included because they are not cost-effective to implement in your state</span>
                         </div>

@@ -242,6 +242,11 @@ body {
     float: right;
 }
 
+.intervention-list-item span {
+    position: relative;
+    left: -5px;
+}
+
 #intervention-icon {
     width: 66px;
     height: 66px;
