@@ -214,17 +214,34 @@ body {
     font-size: 19px;
 }
 
+#page2 .content-section, #page4 .content-section {
+    position: relative;
+}
+
 #page2 .content-section:nth-child(1),
 #page2 .content-section:nth-child(2),
 #page4 .content-section:nth-child(1),
 #page4 .content-section:nth-child(2){
-    position: relative;
     height: 60px;
 }
 
 #page2 .content-section:nth-child(3),
 #page4 .content-section:nth-child(3){
     padding-bottom: 5px;
+}
+
+#page2 .content-section:after, #page4 .content-section:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 5px;
+    background-image: url(../img/background.png);
+}
+
+#page2 .content-section:last-child:after, #page4 .content-section:last-child:after  {
+    display: none;
 }
 
 #page4 .page-header h2 {
