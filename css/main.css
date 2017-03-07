@@ -178,6 +178,7 @@ body {
     border-radius: 5px;
     width: 250px;
     height: 35px;
+    font-weight: bold;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
