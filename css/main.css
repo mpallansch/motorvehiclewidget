@@ -111,7 +111,6 @@ body {
 .modal-header h2 {
     display: table-cell;
     vertical-align: middle;
-    font-weight: normal;
     margin: 0;
 }
 
@@ -210,7 +209,6 @@ body {
 .page-header h2 {
     display: table-cell;
     vertical-align: middle;
-    font-weight: normal;
     margin: 0;
     font-size: 19px;
 }
