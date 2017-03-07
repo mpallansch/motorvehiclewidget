@@ -227,6 +227,14 @@ body {
     padding-bottom: 5px;
 }
 
+#page4 .page-header h2 {
+    font-size: 17px; 
+}
+
+#page4 .small-header-font {
+    font-size: 15px;
+}
+
 #page5 .page-content {
     box-sizing: border-box;
 }
@@ -279,9 +287,10 @@ body {
 }
 
 #intervention-icon {
-    width: 66px;
-    height: 66px;
-    margin-top: 5px;
+    width: 55px;
+    height: 55px;
+    margin-top: 15px;
+    margin-right: 2px;
 }
 
 .mvpiccs-footnote {
@@ -479,9 +488,6 @@ body {
 
 .sprite {
     background-image: url(../img/icons.png);
-}
-
-.sprite.small-icon {
     background-size: 1060px 55px;
 }
 
@@ -510,42 +516,42 @@ body {
 }
 
 .sprite.bicycle-helmet {
-    background-position-x: 400px;
+    background-position-x: 335px;
 }
 
 .sprite.limits-on-diversion {
-    background-position-x: 467px;
+    background-position-x: 390px;
 }
 .sprite.saturation-patrols {
-    background-position-x: 534px;
+    background-position-x: 447px;
 }
 .sprite.in-person-renewal {
-    background-position-x: 601px;
+    background-position-x: 500px;
 }
 .sprite.vehicle-impoundment {
-    background-position-x: 668px;
+    background-position-x: 555px;
 }
 .sprite.sobriety-checkpoints {
-    background-position-x: 735px;
+    background-position-x: 613px;
 }
 .sprite.seat-belt-enforcement-campaign {
-    background-position-x: 802px;
+    background-position-x: 668px;
 }
 .sprite.primary-enforcement-seat-belt-law {
-    background-position-x: 869px;
+    background-position-x: 723px;
 }
 .sprite.motorcycle-helmet {
-    background-position-x: 936px;
+    background-position-x: 778px;
 }
 .sprite.alcohol-interlocks {
-    background-position-x: 1003px;
+    background-position-x: 836px;
 }
 .sprite.license-plate-impound {
-    background-position-x: 1070px;
+    background-position-x: 892px;
 }
 .sprite.red-light-camera {
-    background-position-x: 1137px;
+    background-position-x: 950px;
 }
 .sprite.speed-camera{
-    background-position-x: 1204px;
+    background-position-x: 1004px;
 }
