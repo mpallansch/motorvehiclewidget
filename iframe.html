@@ -16,7 +16,7 @@
                     <div class="page-content">
                         <div class="content-section center-align white">
                             <p><strong>What strategies are you missing?</strong></p>
-                            <p>Select your state.</p>
+                            <p class="below-subheader">Select your state.</p>
                             <div class="select-wrapper">
                                 <select data-ng-model="state" id="state-input" data-ng-change="setIntervention()" control-navigation>
                                     <option data-ng-repeat="(st, value) in data">{{st}}</option>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="page-content center-align">
                         <p><strong>{{state| uppercase}}</strong></p>
-                        <p class="below-state">Select one strategy. See which states have implemented it on the map below</p>
+                        <p class="below-subheader">Select one strategy. See which states have implemented it on the map below</p>
                         <div class="select-wrapper">
                             <select data-ng-model="intervention" data-ng-change="drawMap()" control-navigation>
                                 <option data-ng-repeat="strategy in strategies" data-ng-if="data[state][strategy + ': Intervention Implemented?'] === 'Yes'" value="{{strategy}}">{{strategy}}</option>
