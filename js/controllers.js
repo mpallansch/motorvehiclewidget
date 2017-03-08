@@ -154,7 +154,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                     borderWidth: .3,
                     borderColor: 'black'
                 },
-                fills: {defaultFill: 'khaki', implemented: 'lightblue'},
+                fills: {defaultFill: 'rgb(228, 228, 228)', implemented: 'rgb(133, 193, 243)'},
                 data: $scope.mapData
             });
         };
