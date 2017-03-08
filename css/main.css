@@ -1,3 +1,13 @@
+@font-face{
+    font-family:Lato;
+    src:url(/TemplatePackage/3.0/fonts/lato-regular-webfont.eot);
+    src:url(/TemplatePackage/3.0/fonts/lato-regular-webfont.eot?#iefix) 
+        format('embedded-opentype'),url(/TemplatePackage/3.0/fonts/lato-regular-webfont.woff) 
+        format('woff'),url(/TemplatePackage/3.0/fonts/lato-regular-webfont.ttf) 
+        format('truetype'),url(/TemplatePackage/3.0/fonts/lato-regular-webfont.svg#latoregular) 
+        format('svg');font-weight:400;font-style:normal
+}
+
 #loading-modal, #error-modal {
     display: table;
     position: absolute;
