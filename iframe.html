@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <title>MV PICCS</title>
         <link rel="stylesheet" href="css/main.css" />
@@ -7,8 +7,8 @@
     <body data-ng-controller="mainCtrl">
         <div id="content">
             <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" swipe-page>
-                <a data-ng-click="changePage($event)" href="#" class="arrow left-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber > 1}" data-ng-focus="onFocus" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;</a>
-                <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 5}" data-ng-focus="onFocus" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;</a>
+                <a data-ng-click="changePage($event)" href="#" class="arrow left-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber > 1}" data-ng-focus="onFocus" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;<span class="accessible-hide">Previous Page</span></a>
+                <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 5}" data-ng-focus="onFocus" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;<span class="accessible-hide">Next Page</span></a>
                 <div id="page1" class="page">
                     <div class="page-header darkblue">
                         <h2>Motor Vehicle Injury Prevention: Benefits and Costs by State</h2>

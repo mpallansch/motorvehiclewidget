@@ -8,6 +8,10 @@
         format('svg');font-weight:400;font-style:normal
 }
 
+*:focus {
+    outline: 1px solid orange !important;
+}
+
 #loading-modal, #error-modal {
     display: table;
     position: absolute;
@@ -248,7 +252,7 @@ body {
     display: table-cell;
     vertical-align: middle;
     margin: 0;
-    font-size: 19px;
+    font-size: 1.2em;
 }
 
 #page2 .content-section, #page4 .content-section {
@@ -288,11 +292,11 @@ body {
 }
 
 #page4 .page-header h2 {
-    font-size: 17px; 
+    font-size: 1.1em; 
 }
 
 #page4 .small-header-font {
-    font-size: 15px;
+    font-size: .8em;
 }
 
 #page5 .page-content {
@@ -308,7 +312,7 @@ body {
 }
 
 .below-subheader {
-    font-size: 14px;
+    font-size: .9em;
 }
 
 #map {
@@ -331,7 +335,7 @@ body {
     width: 48%;
     float: left;
     margin: 5px 0px;
-    font-size: 12px;
+    font-size: .75em;
     height: 25px;
 }
 
@@ -354,7 +358,7 @@ body {
 }
 
 .mvpiccs-footnote {
-    font-size: 12px;
+    font-size: .9em;
 }
 
 #embed-code {
@@ -490,21 +494,21 @@ body {
 }
 
 .small-font {
-    font-size: small;
+    font-size: .8em;
 }
 
 .small-header-font {
-    font-size: 16px;
+    font-size: .8em;
 }
 
 .large-font {
     font-weight: bold;
-    font-size: x-large;
+    font-size: 1.9em;
 }
 
 .x-large-font {
     font-weight: bold;
-    font-size: xx-large;
+    font-size: 2.5em;
 }
 
 .bold-font {
