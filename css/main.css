@@ -255,6 +255,12 @@ body {
     position: relative;
 }
 
+#page1 .content-section:nth-child(3){
+    max-height: 170px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 #page2 .content-section:nth-child(1),
 #page2 .content-section:nth-child(2),
 #page4 .content-section:nth-child(1),
