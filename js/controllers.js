@@ -145,7 +145,6 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
             }
             
             $('#map').find('*').not('.accessible-hide').remove();
-            console.log($('#map').html());
 
             $scope.map = new Datamap({
                 scope: 'usa',
