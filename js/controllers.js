@@ -144,7 +144,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                 }
             }
             
-            $('#map').find('*').not('.accessible-hide').remove();
+            $('#map').empty();
 
             $scope.map = new Datamap({
                 scope: 'usa',
@@ -157,6 +157,10 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                 fills: {defaultFill: 'rgb(228, 228, 228)', implemented: 'rgb(133, 193, 243)'},
                 data: $scope.mapData
             });
+            
+            var desc = document.createElement('desc');
+            desc.innerHTML = 'Map of Motor Vehicle Injury Prevention: Benefits and Costs by State';
+            $scope.map.svg.node().appendChild(desc);
         };
         
         $scope.trackLink = function(name){
