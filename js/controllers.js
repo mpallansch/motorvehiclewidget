@@ -113,7 +113,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                     $scope.pageNumber--;
                 }
             } else if ($(e.target).hasClass('right-arrow') || e.type === 'swipeleft') {
-                if ($scope.pageNumber < 5) {
+                if ($scope.pageNumber < 7) {
                     $scope.pageNumber++;
                 }
             }
@@ -125,6 +125,8 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
 
         $scope.setIntervention = function() {
             $window.cdcCommon.metrics.trackEvent('State Selected', $scope.state);
+            
+            $scope.drawMap();
             
             for (var i = 0; i < $scope.strategies.length; i++) {
                 if ($scope.data[$scope.state][$scope.strategies[i] + ': Intervention Implemented?'] === 'Yes') {
@@ -150,13 +152,15 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                 scope: 'usa',
                 element: document.getElementById('map'),
                 geographyConfig: {
-                    popupOnHover: false,
+                    highlightOnHover: false,
                     borderWidth: .3,
                     borderColor: 'black'
                 },
                 fills: {defaultFill: 'rgb(228, 228, 228)', implemented: 'rgb(133, 193, 243)'},
                 data: $scope.mapData
             });
+            
+            $scope.map.svg.selectAll('path.datamaps-subunit.' + $scope.statecodes[$scope.state]).style('stroke', 'yellow').style('stroke-width', '3');
             
             var desc = document.createElement('desc');
             desc.innerHTML = 'Map of Motor Vehicle Injury Prevention: Benefits and Costs by State';
