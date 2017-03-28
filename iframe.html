@@ -6,9 +6,9 @@
     </head>
     <body data-ng-controller="mainCtrl">
         <div id="content" class="darkblue">
-            <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" swipe-page>
-                <a data-ng-click="changePage($event)" href="#" class="arrow left-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber > 1}" data-ng-focus="onFocus" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;<span class="accessible-hide">Previous Page</span></a>
-                <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 7}" data-ng-focus="onFocus" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;<span class="accessible-hide">Next Page</span></a>
+            <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" data-ng-show="!modal" swipe-page>
+                <a data-ng-click="changePage($event)" href="#" class="arrow left-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber > 1}" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;<span class="accessible-hide">Previous Page</span></a>
+                <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 7}" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;<span class="accessible-hide">Next Page</span></a>
                 <div id="page1" class="page">
                     <div class="page-header">
                         <h2>Motor Vehicle Prioritizing Interventions and Cost Calculator for States (MVPICCS)</h2>
@@ -39,7 +39,7 @@
                     </div>
                 </div><div id="page2" class="page">
                     <div class="page-header">
-                        <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font">Strategies and Costs by State</span></h2>
+                        <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies and Costs by State</span></h2>
                     </div>
                     <div class="page-content white">
                         <div class="content-section center-align white">
@@ -66,7 +66,7 @@
                     </div>
                 </div><div id="page3" class="page">
                     <div class="page-header">
-                        <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font">Strategies and Costs by State</span></h2>
+                        <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies and Costs by State</span></h2>
                     </div>
                     <div class="page-content white">
                         <div class="content-section lightblue padding">
@@ -91,17 +91,17 @@
                             <div class="small-icon sprite injuries">
                                 <span class="accessible-hide">Picture of an injured person</span>
                             </div>
-                            <span>INJURIES <span>could be</span> PREVENTED</span><br/> 
+                            <span class="icon-label">INJURIES <span>could be</span> PREVENTED</span><br/> 
                             <span class="large-font">{{data[state]['Total # of Injuries Reduced']| number:0}}</span>
-                            <span class="percentage">Reduction in Injuries<br/><span class="percentage-figure sprite large-font">-{{data[state]['Percent Reduction in Injuries']}}<span class="small-font">%</span></span></span>
+                            <span class="percentage"><span class="down-arrow">&#10145;</span><span class="percentage-figure large-font">{{data[state]['Percent Reduction in Injuries']}}<span class="small-font">%</span></span><br/>Reduction in Injuries</span>
                         </div>
                         <div class="content-section margin-bottom darkblue-font bold-font">
                             <div class="small-icon sprite deaths">
                                 <span class="accessible-hide">Picture of a beating heart</span>
                             </div>
-                            <span>LIVES <span>could be</span> SAVED</span><br/> 
+                            <span class="icon-label">LIVES <span>could be</span> SAVED</span><br/> 
                             <span class="large-font">{{data[state]['Total # of Fatalities Reduced']| number: 0}}</span>
-                            <span class="percentage">Reduction in Deaths<br/> <span class="percentage-figure sprite large-font">-{{data[state]['Percent Reduction in Fatalities']}}<span class="small-font">%</span></span></span>
+                            <span class="percentage"><span class="down-arrow">&#10145;</span><span class="percentage-figure large-font">{{data[state]['Percent Reduction in Fatalities']}}<span class="small-font">%</span></span><br/>Reduction in Deaths</span>
                         </div>
                         <div class="content-section margin-bottom gray-font padding-left">
                             <strong>COST TO IMPLEMENT</strong><br/>
@@ -131,7 +131,7 @@
                         </div>
                         <div id="map">
                         </div>
-                        <a href="#" data-ng-click="pageNumber = 1" class="small-font">Accessible Text Version</a>
+                        <a href="#" data-ng-click="pageNumber = 2" class="small-font">Accessible Text Version</a>
                         <div id="maplegend" class="small-font">
                             <span id="implemented-sample" class="sample"></span><span>Implemented</span>
                             <span id="not-implemented-sample" class="sample"></span><span>Not Implemented</span>
@@ -142,24 +142,24 @@
                     </div>
                 </div><div id="page6" class="page">
                     <div class="page-header">
-                        <h2>{{strategiesFull[intervention]}}<br/><span class="small-header-font">Implementation of this strategy in {{state === "District of Columbia" ? "D.C" : state}}...</span></h2><div id="intervention-icon" class="sprite {{intervention | classify}}"><span class="accessible-hide">{{intervention}}</span></div>
+                        <h2><span class="lightblue-font">{{strategiesFull[intervention]}}</span><br/><span class="small-header-font">Implementation of this strategy in <span class="lightblue-font">{{state === "District of Columbia" ? "D.C" : state}}</span>...</span></h2><div id="intervention-icon" class="sprite {{intervention | classify}}"><span class="accessible-hide">{{intervention}}</span></div>
                     </div>
                     <div class="page-content white small-font">
                         <div class="content-section margin-bottom darkblue-font bold-font">
                             <div class="small-icon sprite injuries">
                                 <span class="accessible-hide">Picture of an injured person</span>
                             </div>
-                            <span>INJURIES <span>could be</span> PREVENTED</span><br/>
+                            <span class="icon-label">INJURIES <span>could be</span> PREVENTED</span><br/>
                             <span class="large-font">{{data[state][intervention + ': # of Injuries Reduced']| number:0}}</span>
-                            <span class="percentage">Reduction in Injuries<br/><span class="percentage-figure sprite large-font sprite">-{{data[state][intervention + ': Percent Reduction in Injuries']}}<span class="small-font">%</span></span></span>
+                            <span class="percentage"><span class="down-arrow">&#10145;</span><span class="percentage-figure large-font">{{data[state][intervention + ': Percent Reduction in Injuries']}}<span class="small-font">%</span></span><br/>Reduction in Injuries</span>
                         </div>
                         <div class="content-section margin-bottom darkblue-font bold-font">
                             <div class="small-icon sprite deaths">
                                 <span class="accessible-hide">Picture of a beating heart</span>
                             </div>
-                            <span>LIVES <span>could be</span> SAVED</span><br/>
+                            <span class="icon-label">LIVES <span>could be</span> SAVED</span><br/>
                             <span class="large-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span>
-                            <span class="percentage">Reduction in Deaths<br/><span class="percentage-figure sprite large-font sprite">-{{data[state][intervention + ': Percent Reduction in Fatalities']}}<span class="small-font">%</span></span></span>
+                            <span class="percentage"><span class="down-arrow">&#10145;</span><span class="percentage-figure large-font">{{data[state][intervention + ': Percent Reduction in Fatalities']}}<span class="small-font">%</span></span><br/>Reduction in Deaths</span>
                         </div>
                         <div class="content-section margin-bottom gray-font padding-left">
                             <strong>COST TO IMPLEMENT</strong><br/>
@@ -179,11 +179,11 @@
                         <h2>Additional Documents and Resources</h2>
                     </div>
                     <div class="page-content padding">
-                        <p>CDC's MV PICCS and additional resources are available online at <a href="http://www.cdc.gov/motorvehiclesafety/calculator/">http://www.cdc.gov/motorvehiclesafety/calculator/</a></p>
-                        <p><a href="#">User Guide</a>: Learn how to use MV PICCS through a step-by-step example.</p>
-                        <p><a href="#">Intervention Fact Sheets</a>: Information on the history, use, effectiveness, measuring effectiveness, costs, time to implement, and other issues related to each of the 14 interventions.</p>
-                        <p><a href="#">Project Report</a>: The technical documentation and methods used for the development of MV PICCS</p>
-                        <p><a href="#">National Estimates</a>: RAND Corporation and Robert Wood Johnson Foundation Research Report and Research Briefs</p>
+                        <p>CDC's MV PICCS and additional resources are available online at <a target="_blank" href="http://www.cdc.gov/motorvehiclesafety/calculator/">http://www.cdc.gov/motorvehiclesafety/calculator/</a></p>
+                        <p><a target="_blank" href="#">User Guide</a>: Learn how to use MV PICCS through a step-by-step example.</p>
+                        <p><a target="_blank" href="#">Intervention Fact Sheets</a>: Information on the history, use, effectiveness, measuring effectiveness, costs, time to implement, and other issues related to each of the 14 interventions.</p>
+                        <p><a target="_blank" href="#">Project Report</a>: The technical documentation and methods used for the development of MV PICCS</p>
+                        <p><a target="_blank" href="#">National Estimates</a>: RAND Corporation and Robert Wood Johnson Foundation Research Report and Research Briefs</p>
                     </div>
                 </div>
             </div>
@@ -203,7 +203,7 @@
                 <div class="modal-header darkblue">
                     <h2>Disclaimer</h2>
                 </div>
-                <div class="modal-content white">
+                <div class="modal-content white small-font">
                     <div class="rid_5a363e44_131963" data-apiroot="//tools.cdc.gov/api" data-mediatype="html" data-mediaid="131963" data-stripscripts="true" data-stripanchors="false" data-stripimages="false" data-stripcomments="true" data-stripstyles="true" data-ids="mdisclaimer" data-xpath="" data-oe="utf-8" data-of="xhtml" data-ns="cdc" data-postprocess="" data-nw="true"></div>
                 </div>
                 <div class="modal-footer">
@@ -214,7 +214,7 @@
                 <div class="modal-header darkblue">
                     <h2>Info</h2>
                 </div>
-                <div class="modal-content white">
+                <div class="modal-content white small-font">
                     <div class="rid_7bc9b9c2_131962" data-apiroot="//tools.cdc.gov/api" data-mediatype="html" data-mediaid="131962" data-stripscripts="true" data-stripanchors="false" data-stripimages="false" data-stripcomments="true" data-stripstyles="true" data-ids="mprivacy" data-xpath="" data-oe="utf-8" data-of="xhtml" data-ns="cdc" data-postprocess="" data-nw="true"></div>
                 </div>
                 <div class="modal-footer">
@@ -223,6 +223,7 @@
             </div>
             <div id="footer" class="center-align">
                 <div id="carousel-dots" class="page{{pageNumber}}">
+                    <a data-ng-click="changePage($event)" href="#" class="left-arrow" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&#9664;<span class="accessible-hide">Previous Page</span></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 1"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 2"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 3"></a>
@@ -230,8 +231,9 @@
                     <a href="#" class="dot" data-ng-click="pageNumber = 5"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 6"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 7"></a>
+                    <a data-ng-click="changePage($event)" href="#" class="right-arrow" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&#9654;<span class="accessible-hide">Previous Page</span></a>
                 </div>
-                <div id="footer-buttons" class="padding">
+                <div id="footer-buttons">
                     <a class="darkblue" href="#" data-ng-click="changeModal('Embed')">Embed</a>
                     <a class="darkblue" href="#" data-ng-click="changeModal('Disclaimer')">Disclaimer</a>
                     <a class="darkblue" href="#" data-ng-click="changeModal('Info')">Info</a>

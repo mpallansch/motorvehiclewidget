@@ -57,7 +57,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                     if (props[j]) {
                         switch (props[j]) {
                             case 'Unimplemented Interventions (Recommended by MV PICCS)':
-                                obj[props[j]] = values[j].split(/[0-9]\./);
+                                obj[props[j]] = values[j].split(/[0-9]*\./);
                                 break;
                             default:
                                 obj[props[j]] = values[j].trim();

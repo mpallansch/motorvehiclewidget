@@ -129,9 +129,13 @@ body {
 
 #footer {
     position: absolute;
-    height: 20%;
+    height: 25%;
     width: 100%;
     bottom: 0;
+}
+
+#footer-buttons {
+    padding: 20px;
 }
 
 #footer-buttons a, .back-button {
@@ -145,8 +149,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 80%;
-    background-color: white;
+    height: 75%;
 }
 
 .modal-header {
@@ -156,6 +159,7 @@ body {
     width: 100%;
     height: 10%;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .modal-header h2 {
@@ -167,8 +171,9 @@ body {
 .modal-content {
     position: absolute;
     height: 80%;
-    width: 100%;
+    width: 94%;
     top: 10%;
+    left: 3%;
     overflow-x: hidden;
     overflow-y: auto;
     padding: 0 15px;
@@ -179,8 +184,10 @@ body {
     text-align: center;
     position: absolute;
     height: 10%;
-    width: 100%;
+    width: 94%;
     top: 90%;
+    left: 3%;
+    background-color: white;
 }
 
 .modal-footer .back-button {
@@ -205,7 +212,8 @@ body {
     display: table;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 94%;
+    margin-left: 3%;
     height: 18%;
     text-align: center;
     text-transform: uppercase;
@@ -213,7 +221,7 @@ body {
 
 .page-content {
     position: absolute;
-    height: 82%;
+    height: 76%;
     width: 94%;
     top: 18%;
     margin-left: 3%;
@@ -289,7 +297,10 @@ body {
     padding-left: 65px;
 }
 
-#page4 .content-section:after, #page6 .content-section:after{
+#page4 .content-section:nth-child(1):after,
+#page4 .content-section:nth-child(2):after,
+#page6 .content-section:nth-child(1):after,
+#page6 .content-section:nth-child(2):after{
     content: '';
     position: absolute;
     left: 0;
@@ -297,10 +308,6 @@ body {
     width: 100%;
     height: 5px;
     background-image: url(../img/background.png);
-}
-
-#page4 .content-section:last-child:after, #page6 .content-section:last-child:after  {
-    display: none;
 }
 
 #page6 .page-header h2 {
@@ -318,6 +325,10 @@ body {
 
 #page7 a {
     color: white;
+}
+
+#page7 p {
+    margin-top: 15px;
 }
 
 #page1 .page-content, #page7 .page-content {
@@ -362,20 +373,19 @@ body {
 .intervention-list {
     margin: 0;
     display: inline-block;
-    padding: 10px 5px 10px 25px;
+    padding: 0 5px 0 15px;
+    list-style-type: none;
 }
 
 .intervention-list-item {
     width: 48%;
     float: left;
-    margin: 5px 0px;
+    margin: 2px 0px;
     font-size: .75em;
     height: 25px;
 }
 
 .intervention-list-item:nth-child(even){
-    position: relative;
-    left: 10px;
     float: right;
 }
 
@@ -393,6 +403,10 @@ body {
 
 .mvpiccs-footnote {
     font-size: .9em;
+}
+
+.mvpiccs-footnote a {
+    color: white;   
 }
 
 #embed-code {
@@ -414,21 +428,27 @@ body {
     background-color: #404040;
 }
 
+.icon-label {
+    display: inline-block;
+    width: 120px;
+    margin-left: 2px;
+}
+
 #carousel-dots {
     width: 94%;
     margin-left: 3%;
-    margin-top: 2px;
     height: 25px;
     box-shadow: 0 2px 2px black, inset 1px 1px 1px lightblue;
+    padding-top: 5px;
 }
 
-#carousel-dots.page1 .dot:nth-child(1),
-#carousel-dots.page2 .dot:nth-child(2),
-#carousel-dots.page3 .dot:nth-child(3),
-#carousel-dots.page4 .dot:nth-child(4),
-#carousel-dots.page5 .dot:nth-child(5),
-#carousel-dots.page6 .dot:nth-child(6),
-#carousel-dots.page7 .dot:nth-child(7){
+#carousel-dots.page1 .dot:nth-child(2),
+#carousel-dots.page2 .dot:nth-child(3),
+#carousel-dots.page3 .dot:nth-child(4),
+#carousel-dots.page4 .dot:nth-child(5),
+#carousel-dots.page5 .dot:nth-child(6),
+#carousel-dots.page6 .dot:nth-child(7),
+#carousel-dots.page7 .dot:nth-child(8){
     background-color: silver;
 }
 
@@ -448,24 +468,45 @@ body {
 }
 
 .left-arrow {
-    left: 0;
+    left: 3%;
 }
 
 .right-arrow {
-    right: 0;
+    right: 3%;
+}
+
+#footer .left-arrow, #footer .right-arrow {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#footer .left-arrow {
+    float: left;
+    margin-left: 25px;
+}
+
+#footer .right-arrow {
+    float: right;
+    margin-right: 25px;
+}
+
+.down-arrow {
+    font-size: x-large;
+    display: inline-block;
+    transform: rotate(90deg) scaleY(2);
 }
 
 .percentage {
     text-align: center;
     position: absolute;
-    right: 5px;
-    top: 5px;
+    max-width: 80px;
+    right: 2px;
+    top: 2px;
 }
 
 .percentage-figure {
-    display: block;
-    width: 95px;
-    height: 43px;
+    display: inline-block;
 }
 
 .percentage-figure .small-font {
@@ -511,7 +552,7 @@ body {
 }
 
 .padding {
-    padding: 15px;
+    padding: 10px;
 }
 
 .padding-small {
@@ -583,7 +624,7 @@ body {
 }
 
 .lightblue-font {
-    color: rgb(225, 225, 255);
+    color: rgb(185, 235, 255);
 }
 
 .white {
@@ -622,12 +663,6 @@ body {
 .sprite.exclamation {
     background-size: 771px 40px;
     background-position-x: 40px;
-}
-
-.sprite.percentage-figure {
-    background-size: 1900px 75px;
-    background-position-x: 295px;
-    background-position-y: -20px;
 }
 
 .sprite.bicycle-helmet {
@@ -672,14 +707,215 @@ body {
 }
 
 .state-sprite {
-    background-image: url(../img/states.png);
+    background-image: url(../img/states.png);    
+    background-size: 2792px 55px;
+}
+
+.state-sprite.district-of-columbia {
+    background-image: url(../img/dc.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 10px;
+}
+
+.state-sprite.nevada {
+    background-position-x: -60px;
+}
+
+.state-sprite.new-hampshire {
+    background-position-x: -120px;
+}
+
+.state-sprite.new-jersey {
+    background-position-x: -170px;
+}
+
+.state-sprite.new-mexico {
+    background-position-x: -225px;
+}
+
+.state-sprite.new-york {
+    background-position-x: -275px;
+}
+
+.state-sprite.north-carolina {
+    background-position-x: -335px;
+}
+
+.state-sprite.north-dakota {
+    background-position-x: -390px;
+}
+
+.state-sprite.ohio {
+    background-position-x: -445px;
+}
+
+.state-sprite.oklahoma {
+    background-position-x: -505px;
+}
+
+.state-sprite.oregon {
+    background-position-x: -560px;
+}
+
+.state-sprite.pennsylvania {
+    background-position-x: -615px;
+}
+
+.state-sprite.rhode-island {
+    background-position-x: -670px;
+}
+
+.state-sprite.south-carolina {
+    background-position-x: -725px;
+}
+
+.state-sprite.south-dakota {
+    background-position-x: -780px;
+}
+
+.state-sprite.tennessee {
+    background-position-x: -838px;
+}
+
+.state-sprite.texas {
+    background-position-x: -895px;
+}
+
+.state-sprite.utah {
+    background-position-x: -950px;
+}
+
+.state-sprite.vermont {
+    background-position-x: -1005px;
+}
+
+.state-sprite.virginia {
+    background-position-x: -1060px;
+}
+
+.state-sprite.washington {
+    background-position-x: -1120px;
+}
+
+.state-sprite.west-virginia {
+    background-position-x: -1175px;
+}
+
+.state-sprite.wisconsin {
+    background-position-x: -1230px;
+}
+
+.state-sprite.wyoming {
+    background-position-x: -1285px;
+}
+
+.state-sprite.alabama {
+    background-position-x: -1340px;
+}
+
+.state-sprite.alaska {
+    background-position-x: -1395px;
+}
+
+.state-sprite.arizona {
+    background-position-x: -1450px;
+}
+
+.state-sprite.arkansas {
+    background-position-x: -1510px;
+}
+
+.state-sprite.california {
+    background-position-x: -1565px;
+}
+
+.state-sprite.colorado {
+    background-position-x: -1620px;
+}
+
+.state-sprite.connecticut {
+    background-position-x: -1675px;
+}
+
+.state-sprite.delaware {
+    background-position-x: -1730px;
+}
+
+.state-sprite.florida {
+    background-position-x: -1790px;
+}
+
+.state-sprite.georgia {
+    background-position-x: -1845px;
+}
+
+.state-sprite.hawaii {
+    background-position-x: -1900px;
+}
+
+.state-sprite.idaho {
+    background-position-x: -1955px;
+}
+
+.state-sprite.illinois {
+    background-position-x: -2010px;
+}
+
+.state-sprite.indiana {
+    background-position-x: -2065px;
+}
+
+.state-sprite.iowa {
+    background-position-x: -2120px;
+}
+
+.state-sprite.kansas {
+    background-position-x: -2180px;
+}
+
+.state-sprite.kentucky {
+    background-position-x: -2235px;
+}
+
+.state-sprite.lousiana {
+    background-position-x: -2290px;
+}
+
+.state-sprite.maine {
+    background-position-x: -2345px;
+}
+
+.state-sprite.maryland {
+    background-position-x: -2400px;
+}
+
+.state-sprite.massachussetts {
+    background-position-x: -2460px;
+}
+
+.state-sprite.michigan {
+    background-position-x: -2515px;
+}
+
+.state-sprite.minnesota {
+    background-position-x: -2570px;
+}
+
+.state-sprite.mississippi {
+    background-position-x: -2625px;
+}
+
+.state-sprite.missouri {
+    background-position-x: -2680px;
+}
+
+.state-sprite.montana {
+    background-position-x: -2735px;
 }
 
 @media (max-width: 400px) {   
-    #page2 .content-section:nth-child(3),
-    #page3 .content-section:nth-child(3){
-        max-height: 200px;
-        overflow-x: hidden;
-        overflow-y: auto;
+    #page7 .page-content {
+        font-size: small;
     }
 }
