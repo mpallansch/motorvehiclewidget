@@ -370,17 +370,32 @@ body {
     margin-top: 15px;
 }
 
+.tooltip {
+    display: block;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border: 1px solid black;
+    background-color: white;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px black;
+}
+
 .intervention-list {
     margin: 0;
     display: inline-block;
-    padding: 0 5px 0 15px;
+    padding: 0;
     list-style-type: none;
+    width: 100%;
 }
 
 .intervention-list-item {
     width: 48%;
     float: left;
-    margin: 2px 0px;
+    margin: 7px 0px;
     font-size: .75em;
     height: 25px;
 }
@@ -390,8 +405,8 @@ body {
 }
 
 .intervention-list-item span {
-    position: relative;
-    left: -5px;
+    display: inline-block;
+    margin: 0 5px;
 }
 
 #intervention-icon, #state-icon {
@@ -399,6 +414,12 @@ body {
     height: 55px;
     margin-top: 15px;
     margin-right: 15px;
+}
+
+.implementation-notation {
+    font-size: .75em;
+    padding: 5px;
+    display: inline-block;
 }
 
 .mvpiccs-footnote {
@@ -917,5 +938,13 @@ body {
 @media (max-width: 400px) {   
     #page7 .page-content {
         font-size: small;
+    }
+    
+    #page6 .page-header h2 {
+        font-size: 1em;
+    }
+    
+    #page6 .small-header-font {
+        font-size: .75em;
     }
 }
