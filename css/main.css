@@ -373,7 +373,7 @@ body {
 .tooltip {
     display: block;
     width: 150px;
-    height: 150px;
+    padding: 5px;
     position: absolute;
     top: 5px;
     right: 10px;
