@@ -384,6 +384,11 @@ body {
     box-shadow: 2px 2px 10px black;
 }
 
+.overflow-scroll {
+    max-height: 265px;
+    overflow-y: auto;
+}
+
 .intervention-list {
     margin: 0;
     display: inline-block;
