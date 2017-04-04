@@ -6,6 +6,43 @@
     </head>
     <body data-ng-controller="mainCtrl">
         <div id="content" class="darkblue">
+            <div data-ng-init="introModal = true" id="first-page-modal" data-ng-show="introModal">
+                <div class="page-header uppercase">
+                    <h2>Motor Vehicle Prioritizing Interventions and Cost Calculator for States<br/><span class="small-header-font lightblue-font">(MV PICCS)</span></h2>
+                </div>
+                <div class="page-content">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><div class="intro-icon sprite bicycle-helmet"></div></td>
+                                <td><div class="intro-icon sprite speed-camera"></div></td>
+                                <td><div class="intro-icon sprite red-light-camera"></div></td>
+                                <td><div class="intro-icon sprite license-plate-impound"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="intro-icon sprite alcohol-interlocks"></div></td>
+                                <td><div class="intro-icon sprite motorcycle-helmet"></div></td>
+                                <td><div class="intro-icon sprite primary-enforcement-seat-belt-law"></div></td>
+                                <td><div class="intro-icon sprite seat-belt-enforcement-campaign"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="intro-icon sprite sobriety-checkpoints"></div></td>
+                                <td><div class="intro-icon sprite vehicle-impoundment"></div></td>
+                                <td><div class="intro-icon sprite in-person-renewal"></div></td>
+                                <td><div class="intro-icon sprite limits-on-diversion"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="intro-icon sprite increased-seat-belt-fine"></div></td>
+                                <td class="begin-container" colspan="2"><a href="#" data-ng-click="introModal = false">Begin</a></td>
+                                <td><div class="intro-icon sprite saturation-patrols"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a target="_blank" href="https://www.cdc.gov" data-ng-click="trackLink('CDC Logo')">
+                        <img class="logo" src="/TemplatePackage/contrib/widgets/images/cdc_badge.png" alt="CDC Logo" />
+                    </a>
+                </div>
+            </div>
             <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" data-ng-show="!modal" swipe-page>
                 <a data-ng-click="changePage($event)" href="#" class="arrow left-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber > 1}" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;<span class="accessible-hide">Previous Page</span></a>
                 <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 7}" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;<span class="accessible-hide">Next Page</span></a>
@@ -238,7 +275,7 @@
                     <a class="darkblue" href="#" data-ng-click="changeModal('Info')">Info</a>
                 </div>
                 <a target="_blank" href="https://www.cdc.gov" data-ng-click="trackLink('CDC Logo')">
-                    <img id="logo" src="/TemplatePackage/contrib/widgets/images/cdc_badge.png" alt="CDC Logo" />
+                    <img class="logo" src="/TemplatePackage/contrib/widgets/images/cdc_badge.png" alt="CDC Logo" />
                 </a>
             </div>
         </div>
