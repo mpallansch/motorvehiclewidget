@@ -6,7 +6,7 @@
     </head>
     <body data-ng-controller="mainCtrl">
         <div id="content" class="darkblue">
-            <div data-ng-init="introModal = true" id="first-page-modal" data-ng-show="introModal">
+            <div data-ng-init="firstPageModal = true" id="first-page-modal" data-ng-show="firstPageModal">
                 <div class="page-header uppercase">
                     <h2>Motor Vehicle Prioritizing Interventions and Cost Calculator for States<br/><span class="small-header-font lightblue-font">(MV PICCS)</span></h2>
                 </div>
@@ -33,7 +33,7 @@
                             </tr>
                             <tr>
                                 <td><div class="intro-icon sprite increased-seat-belt-fine"></div></td>
-                                <td class="begin-container" colspan="2"><a href="#" data-ng-click="introModal = false">Begin</a></td>
+                                <td class="begin-container" colspan="2"><a href="#" data-ng-click="firstPageModal = false">Begin</a></td>
                                 <td><div class="intro-icon sprite saturation-patrols"></div></td>
                             </tr>
                         </tbody>
@@ -43,38 +43,41 @@
                     </a>
                 </div>
             </div>
+            <div data-ng-init="secondPageModal = true" id="second-page-modal" data-ng-show="secondPageModal">
+                <div class="page-header uppercase">
+                    <h2>Motor Vehicle Prioritizing Interventions and Cost Calculator for States<br/><span class="small-header-font lightblue-font">(MV PICCS)</span></h2>
+                </div>
+                <div class="page-content center-align">
+                    <p>MV PICCS is a free interactive calculator that estimates the costs of implementing up to 14 motor vehicle evidence-based strategies, while taking into account a state's specific budget. The strategies included in MV PICCS are:</p>
+                    <div class="content-section overflow-scroll">
+                        <ul>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Automated Red-Light Enforcement</span><div class="intro-icon sprite red-light-camera"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Automated Speed-Camera Enforcement</span><div class="intro-icon sprite speed-camera"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Alcohol Interlocks</span><div class="intro-icon sprite alcohol-interlocks"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Sobriety Checkpoints</span><div class="intro-icon sprite sobriety-checkpoints"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Saturation Patrols</span><div class="intro-icon sprite saturation-patrols"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Bicycle Helmet Laws for Children</span><div class="intro-icon sprite bicycle-helmet"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Universal Motorcycle Helmet Laws</span><div class="intro-icon sprite motorcycle-helmet"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Primary Enforcement of Seat Belt Laws</span><div class="intro-icon sprite primary-enforcement-seat-belt-law"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>High-Visibility Belt Law Enforcement</span><div class="intro-icon sprite seat-belt-enforcement-campaign"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>License Plate Impoundment</span><div class="intro-icon sprite license-plate-impound"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Limits on Diversion and Plea Agreements</span><div class="intro-icon sprite limits-on-diversion"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Vehicle Impoundment</span><div class="intro-icon sprite vehicle-impoundment"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>In-Person License Renewal</span><div class="intro-icon sprite in-person-renewal"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Increased Fines for Seat Belt Use</span><div class="intro-icon sprite increased-seat-belt-fine"></div></a></li>
+                        </ul>
+                    </div>
+                    <p>This widget estimates the number of injuries prevented, lives saved, and costs averted from implementing motor vehicle strategies in your state.</p>
+                    <a href="#" class="start-button" data-ng-click="secondPageModal = false">Start</a>
+                    <a target="_blank" href="https://www.cdc.gov" data-ng-click="trackLink('CDC Logo')">
+                        <img class="logo" src="/TemplatePackage/contrib/widgets/images/cdc_badge.png" alt="CDC Logo" />
+                    </a>
+                </div>
+            </div>
             <div id="page-container" class="page{{pageNumber}}" data-ng-mouseout="showArrows = false" data-ng-mouseover="showArrows = true" data-ng-show="!modal" swipe-page>
                 <a data-ng-click="changePage($event)" href="#" class="arrow left-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber > 1}" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;<span class="accessible-hide">Previous Page</span></a>
-                <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 7}" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;<span class="accessible-hide">Next Page</span></a>
+                <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 6}" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;<span class="accessible-hide">Next Page</span></a>
                 <div id="page1" class="page">
-                    <div class="page-header">
-                        <h2>Motor Vehicle Prioritizing Interventions and Cost Calculator for States (MVPICCS)</h2>
-                    </div>
-                    <div class="page-content padding white">
-                        <p>MV PICCS is a free interactive calculator that estimates the costs of implementing up to 14 motor vehicle evidence-based strategies, while taking into account a state's specific budget. The strategies included in MV PICCS are:</p>
-                        <div class="content-section small-font">
-                            <ul>
-                                <li>Primary enforcement of seat belt laws</li>
-                                <li>High-visibility enforcement for seat belts and child restraint and booster laws</li>
-                                <li>Increased fines for seat belt use</li>
-                                <li>Sobriety checkpoints</li>
-                                <li>Alcohol interlocks</li>
-                                <li>Saturation patrols</li>
-                                <li>Universal motorcycle helmet laws</li>
-                                <li>Vehicle Impoundment</li>
-                                <li>Automated red-light enforcement</li>
-                                <li>Automated speed-camera enforcement</li>
-                                <li>In person license renewal for adults aged 70 and older</li>
-                                <li>Bicycle helmet laws for children</li>
-                                <li>License plate impoundment</li>
-                                <li>Limits on diversion and plea agreements</li>
-                            </ul>
-                        </div>
-                        <div class="content-section center-align margin-bottom">
-                            <a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html">Strategies Glossary</a>
-                        </div>
-                    </div>
-                </div><div id="page2" class="page">
                     <div class="page-header">
                         <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies and Costs by State</span></h2>
                     </div>
@@ -100,7 +103,7 @@
                             Strategies that <i>could be</i> used in your state...
                         </div>
                     </div>
-                </div><div id="page3" class="page">
+                </div><div id="page2" class="page">
                     <div class="page-header">
                         <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies and Costs by State</span></h2>
                     </div>
@@ -118,7 +121,7 @@
                             See the costs and benefits of implementing these strategies...
                         </div>
                     </div>
-                </div><div id="page4" class="page">
+                </div><div id="page3" class="page">
                     <div class="page-header">
                         <h2>If previous strategies were implemented in <span class="lightblue-font">{{state === "District of Columbia" ? "D.C." : state}}</span></h2><div id="state-icon" class="state-sprite {{state | classify}}"><span class="accessible-hide">{{state}}</span></div>
                     </div>
@@ -152,7 +155,7 @@
                             <p>See how your state compares nationwide.</p>
                         </div>
                     </div>
-                </div><div id="page5" class="page">
+                </div><div id="page4" class="page">
                     <div class="page-header">
                         <h2>How Does Your State Compare?</h2>
                     </div>
@@ -176,7 +179,7 @@
                             <p>See the costs and benefits of implementing this strategy on the next screen</p>
                         </div>
                     </div>
-                </div><div id="page6" class="page">
+                </div><div id="page5" class="page">
                     <div class="page-header">
                         <h2><span class="lightblue-font">{{strategiesFull[intervention]}}</span><br/><span class="small-header-font">Implementation of this strategy in <span class="lightblue-font">{{state === "District of Columbia" ? "D.C." : state}}</span>...</span></h2><div id="intervention-icon" class="sprite {{intervention | classify}}"><span class="accessible-hide">{{intervention}}</span></div>
                     </div>
@@ -210,7 +213,7 @@
                             <p>Visit <a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/" data-ng-click="trackLink('MV PICCS')" control-navigation>www.cdc.gov/motorvehiclesafety/calculator/</a> for a list of recommended strategies to implement based on your state's budget.</p>
                         </div>
                     </div>
-                </div><div id="page7" class="page">
+                </div><div id="page6" class="page">
                     <div class="page-header">
                         <h2>Additional Documents and Resources</h2>
                     </div>
@@ -266,7 +269,6 @@
                     <a href="#" class="dot" data-ng-click="pageNumber = 4"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 5"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 6"></a>
-                    <a href="#" class="dot" data-ng-click="pageNumber = 7"></a>
                     <a data-ng-click="changePage($event)" href="#" class="triangle right-arrow" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation><span class="accessible-hide">Previous Page</span></a>
                 </div>
                 <div id="footer-buttons">

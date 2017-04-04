@@ -121,7 +121,7 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                     $scope.pageNumber--;
                 }
             } else if ($(e.target).hasClass('right-arrow') || e.type === 'swipeleft') {
-                if ($scope.pageNumber < 7) {
+                if ($scope.pageNumber < 6) {
                     $scope.pageNumber++;
                 }
             }

@@ -120,13 +120,6 @@ body {
     transform: translateX(-500%);
 }
 
-#page-container.page7 .page {
-    -webkit-transform: translateX(-600%);
-    -moz-transform: translateX(-600%);
-    -ms-transform: translateX(-600%);
-    transform: translateX(-600%);
-}
-
 #footer {
     position: absolute;
     height: 25%;
@@ -194,13 +187,17 @@ body {
     top: 15px;
 }
 
-#first-page-modal {
+#first-page-modal, #second-page-modal {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image: url(../img/intro-background.png);
+    z-index: 2;
+}
+
+#second-page-modal {
     z-index: 1;
 }
 
@@ -220,7 +217,7 @@ body {
     text-align: center;
 }
 
-#first-page-modal .begin-container a {
+#first-page-modal .begin-container a, #second-page-modal .start-button {
     color: black;
     text-decoration: none;
     border-radius: 5px;
@@ -228,6 +225,42 @@ body {
     background-color: white;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+#second-page-modal .start-button {
+    position: relative;
+    top: 20px;
+}
+
+#second-page-modal .page-content {
+    height: 80%;
+}
+
+#second-page-modal .overflow-scroll {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#second-page-modal ul {
+    list-style-type: none;
+    padding: 0;
+    position: relative;
+}
+
+#second-page-modal a {
+    color: white;
+}
+
+#second-page-modal li span {
+    display: inline-block;
+    width: 75%;
+    margin-bottom: 10px;
+    vertical-align: top;
+    padding-top: 5px;
+}
+
+#second-page-modal .intro-icon {
+    display: inline-block;
 }
 
 .page {
@@ -475,11 +508,15 @@ body {
     height: 100px;
 }
 
-#first-page-modal .logo {
+#first-page-modal .logo, #second-page-modal .logo {
     position: absolute;
     bottom: 15px;
     left: 50%;
     margin-left: -39px;
+}
+
+#second-page-modal .logo {
+    bottom: 0;
 }
 
 .logo {    
@@ -515,8 +552,7 @@ body {
 #carousel-dots.page3 .dot:nth-child(4),
 #carousel-dots.page4 .dot:nth-child(5),
 #carousel-dots.page5 .dot:nth-child(6),
-#carousel-dots.page6 .dot:nth-child(7),
-#carousel-dots.page7 .dot:nth-child(8){
+#carousel-dots.page6 .dot:nth-child(7){
     background-color: silver;
 }
 
@@ -1002,6 +1038,11 @@ body {
 
     .overflow-scroll {
         max-height: 265px;
+        overflow-y: auto;
+    }
+    
+    #second-page-modal .overflow-scroll {
+        max-height: 160px;
         overflow-y: auto;
     }
     
