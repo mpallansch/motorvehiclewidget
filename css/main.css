@@ -347,27 +347,27 @@ body {
     font-size: 1.1em;
 }
 
-#page4 .content-section, #page6 .content-section {
+#page3 .content-section, #page5 .content-section {
     position: relative;
 }
 
-#page4 .content-section:nth-child(1),
-#page4 .content-section:nth-child(2),
-#page6 .content-section:nth-child(1),
-#page6 .content-section:nth-child(2){
+#page3 .content-section:nth-child(1),
+#page3 .content-section:nth-child(2),
+#page5 .content-section:nth-child(1),
+#page5 .content-section:nth-child(2){
     height: 60px;
 }
 
-#page4 .content-section:nth-child(3),
-#page6 .content-section:nth-child(3){
+#page3 .content-section:nth-child(3),
+#page5 .content-section:nth-child(3){
     padding-bottom: 5px;
     padding-left: 65px;
 }
 
-#page4 .content-section:nth-child(1):after,
-#page4 .content-section:nth-child(2):after,
-#page6 .content-section:nth-child(1):after,
-#page6 .content-section:nth-child(2):after{
+#page3 .content-section:nth-child(1):after,
+#page3 .content-section:nth-child(2):after,
+#page5 .content-section:nth-child(1):after,
+#page5 .content-section:nth-child(2):after{
     content: '';
     position: absolute;
     left: 0;
@@ -377,28 +377,28 @@ body {
     background-image: url(../img/background.png);
 }
 
-#page6 .page-header h2 {
+#page5 .page-header h2 {
     font-size: 1.1em; 
 }
 
-#page6 .small-header-font {
+#page5 .small-header-font {
     font-size: .8em;
 }
 
-#page7 .page-content {
+#page6 .page-content {
     width: 100%;
     margin-left: 0;
 }
 
-#page7 a {
+#page6 a {
     color: white;
 }
 
-#page7 p {
+#page6 p {
     margin-top: 15px;
 }
 
-#page1 .page-content, #page7 .page-content {
+#page6 .page-content {
     box-sizing: border-box;
 }
 
@@ -423,7 +423,7 @@ body {
     padding: 2px 0;
 }
 
-#page4 .next-page-prompt, #page6 .next-page-prompt {
+#page3 .next-page-prompt, #page5 .next-page-prompt {
     position: absolute;
 }
 
@@ -1024,15 +1024,15 @@ body {
 }
 
 @media (max-width: 400px) {   
-    #page7 .page-content {
+    #page6 .page-content {
         font-size: small;
     }
     
-    #page6 .page-header h2 {
+    #page5 .page-header h2 {
         font-size: 1em;
     }
     
-    #page6 .small-header-font {
+    #page5 .small-header-font {
         font-size: .75em;
     }
 
