@@ -386,12 +386,7 @@ body {
 }
 
 #page6 .page-content {
-    width: 100%;
-    margin-left: 0;
-}
-
-#page6 a {
-    color: white;
+    word-wrap: break-word;
 }
 
 #page6 p {
@@ -614,11 +609,6 @@ body {
     display: inline-block;
 }
 
-.percentage-figure .small-font {
-    position: relative;
-    bottom: 12px;
-}
-
 .dollarsign {
     position: absolute;
     top: 20px;
@@ -757,16 +747,18 @@ body {
 }
 
 .sprite.injuries {
-    background-position-x: 224px;
+    background-position-x: 258px;
+    background-size: 1260px 55px;
 }
 
 .sprite.deaths {
-    background-position-x: 279px;
+    background-position-x: 216px;
+    background-size: 800px 55px;
 }
 
 .sprite.dollarsign {
-    background-size: 2120px 110px;
-    background-position-x: 192px;
+    background-size: 1520px 110px;
+    background-position-x: 145px;
 }
 
 .sprite.exclamation {

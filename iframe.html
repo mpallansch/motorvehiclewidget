@@ -79,7 +79,7 @@
                 <a data-ng-click="changePage($event)" href="#" class="arrow right-arrow accessible-hide" data-ng-class="{'accessible-show': showArrows && pageNumber < 6}" tabindex="{{pageNumber < 5 ? 0 : -1}}" control-navigation>&gt;<span class="accessible-hide">Next Page</span></a>
                 <div id="page1" class="page">
                     <div class="page-header">
-                        <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies and Costs by State</span></h2>
+                        <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies That Are Used In Your State</span></h2>
                     </div>
                     <div class="page-content white">
                         <div class="content-section center-align white">
@@ -105,11 +105,11 @@
                     </div>
                 </div><div id="page2" class="page">
                     <div class="page-header">
-                        <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies and Costs by State</span></h2>
+                        <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies That Are Used In Your State</span></h2>
                     </div>
                     <div class="page-content white">
                         <div class="content-section lightblue padding">
-                            If the following strategies where implemented in your state...
+                            If the following strategies where implemented in {{state}}...
                         </div>
                         <div class="content-section overflow-scroll">
                             <ul class="intervention-list">
@@ -130,16 +130,16 @@
                             <div class="small-icon sprite injuries">
                                 <span class="accessible-hide">Picture of an injured person</span>
                             </div>
-                            <span class="icon-label">INJURIES <span>could be</span> PREVENTED</span><br/> 
-                            <span class="large-font">{{data[state]['Total # of Injuries Reduced']| number:0}}</span>
+                            <span class="large-font">{{data[state]['Total # of Injuries Reduced']| number:0}}</span><br/>
+                            <span class="icon-label">Injuries <span>could be</span> Prevented</span>
                             <span class="percentage" data-ng-click="showToolTip = true"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font">{{data[state]['Percent Reduction in Injuries']}}<span class="small-font">%</span></span><br/>Reduction in Injuries<span data-ng-show="data[state]['Notation: Reduction in injuries'] === 'Yes'">*<span class="tooltip" data-ng-show="showToolTip">Percent reduction in injuries is higher than the number shown. Literature suggests sobriety checkpoints has a greater effect on the reduction of injuries than fatalities.</span></span></span>
                         </div>
                         <div class="content-section margin-bottom darkblue-font bold-font">
                             <div class="small-icon sprite deaths">
                                 <span class="accessible-hide">Picture of a beating heart</span>
-                            </div>
-                            <span class="icon-label">LIVES <span>could be</span> SAVED</span><br/> 
-                            <span class="large-font">{{data[state]['Total # of Fatalities Reduced']| number: 0}}</span>
+                            </div> 
+                            <span class="large-font">{{data[state]['Total # of Fatalities Reduced']| number: 0}}</span><br/>
+                            <span class="icon-label">Lives <span>could be</span> Saved</span>
                             <span class="percentage"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font">{{data[state]['Percent Reduction in Fatalities']}}<span class="small-font">%</span></span><br/>Reduction in Deaths</span>
                         </div>
                         <div class="content-section margin-bottom gray-font padding-left">
@@ -170,11 +170,11 @@
                         </div>
                         <div id="map">
                         </div>
-                        <a href="#" data-ng-click="pageNumber = 2" class="small-font">Accessible Text Version</a>
                         <div id="maplegend" class="small-font">
                             <span id="implemented-sample" class="sample"></span><span>Implemented</span>
                             <span id="not-implemented-sample" class="sample"></span><span>Not Implemented</span>
                         </div>
+                        <a href="#" data-ng-click="pageNumber = 1" class="small-font">Accessible Text Version</a>
                         <div class="content-section next-page-prompt darkblue small-font">
                             <p>See the costs and benefits of implementing this strategy on the next screen</p>
                         </div>
@@ -188,16 +188,16 @@
                             <div class="small-icon sprite injuries">
                                 <span class="accessible-hide">Picture of an injured person</span>
                             </div>
-                            <span class="icon-label">INJURIES <span>could be</span> PREVENTED</span><br/>
-                            <span class="large-font">{{data[state][intervention + ': # of Injuries Reduced']| number:0}}</span>
+                            <span class="large-font">{{data[state][intervention + ': # of Injuries Reduced']| number:0}}</span><br/>
+                            <span class="icon-label">Injuries <span>could be</span> Prevented</span>
                             <span class="percentage" data-ng-click="showToolTip = true"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font">{{data[state][intervention + ': Percent Reduction in Injuries']}}<span class="small-font">%</span></span><br/>Reduction in Injuries<span data-ng-show="intervention === 'Sobriety Checkpoints'">*<span class="tooltip" data-ng-show="showToolTip">Percent reduction in injuries is higher than the number shown. Literature suggests sobriety checkpoints has a greater effect on the reduction of injuries than fatalities.</span></span></span>
                         </div>
                         <div class="content-section margin-bottom darkblue-font bold-font">
                             <div class="small-icon sprite deaths">
                                 <span class="accessible-hide">Picture of a beating heart</span>
                             </div>
-                            <span class="icon-label">LIVES <span>could be</span> SAVED</span><br/>
-                            <span class="large-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span>
+                            <span class="large-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span><br/>
+                            <span class="icon-label">Lives <span>could be</span> Saved</span>
                             <span class="percentage"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font">{{data[state][intervention + ': Percent Reduction in Fatalities']}}<span class="small-font">%</span></span><br/>Reduction in Deaths</span>
                         </div>
                         <div class="content-section margin-bottom gray-font padding-left">
@@ -217,7 +217,7 @@
                     <div class="page-header">
                         <h2>Additional Documents and Resources</h2>
                     </div>
-                    <div class="page-content padding">
+                    <div class="page-content white padding">
                         <p>CDC's MV PICCS and additional resources are available online at <a target="_blank" href="http://www.cdc.gov/motorvehiclesafety/calculator/">http://www.cdc.gov/motorvehiclesafety/calculator/</a></p>
                         <p><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/doc/6.html">User Guide</a>: Learn how to use MV PICCS through a step-by-step example.</p>
                         <p><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/factsheet/index.html">Intervention Fact Sheets</a>: Information on the history, use, effectiveness, measuring effectiveness, costs, time to implement, and other issues related to each of the 14 interventions.</p>
