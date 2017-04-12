@@ -165,7 +165,7 @@
                             <p class="below-subheader">Select a strategy and see where it's been implemented:</p>
                             <div class="select-wrapper">
                                 <select data-ng-model="intervention" data-ng-change="drawMap()" control-navigation>
-                                    <option data-ng-repeat="strategy in strategies | orderBy:'toString()'" value="{{strategy}}">{{strategiesFull[strategy]}}</option>
+                                    <option data-ng-repeat="strategy in strategies" value="{{strategy}}">{{strategiesFull[strategy]}}</option>
                                 </select>
                                 <div class="select-arrow lightblue darkblue-font" data-ng-click="openSelect($event)">^</div>
                             </div>
