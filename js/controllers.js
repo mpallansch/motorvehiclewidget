@@ -35,6 +35,8 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                 }
             });
             
+            $(window).bind('resize', $scope.sizeShowMap);
+            
             $window.cdcCommon.metrics.trackEvent('Widget Load');
             $window.cdcCommon.metrics.trackEvent('Page 1');
         };
@@ -154,6 +156,10 @@ motorVehiclesControllers.controller('mainCtrl', ['$scope', '$http', '$window', f
                 }
             }
             
+            $scope.sizeShowMap();
+        };
+        
+        $scope.sizeShowMap = function(){
             $('#map').empty();
 
             $scope.map = new Datamap({

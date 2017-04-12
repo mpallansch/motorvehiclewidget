@@ -7,7 +7,7 @@
     <body data-ng-controller="mainCtrl">
         <div id="content" class="darkblue">
             <div data-ng-init="firstPageModal = true" id="first-page-modal" data-ng-show="firstPageModal">
-                <div class="page-header uppercase">
+                <div class="page-header">
                     <h2>Motor Vehicle Prioritizing Interventions and Cost Calculator for States<br/><span class="small-header-font lightblue-font">(MV PICCS)</span></h2>
                 </div>
                 <div class="page-content">
@@ -44,15 +44,15 @@
                 </div>
             </div>
             <div data-ng-init="secondPageModal = true" id="second-page-modal" data-ng-show="secondPageModal">
-                <div class="page-header uppercase">
+                <div class="page-header">
                     <h2>Motor Vehicle Prioritizing Interventions and Cost Calculator for States<br/><span class="small-header-font lightblue-font">(MV PICCS)</span></h2>
                 </div>
-                <div class="page-content center-align">
+                <div class="page-content">
                     <p>MV PICCS is a free interactive calculator that estimates the costs of implementing up to 14 motor vehicle evidence-based strategies, while taking into account a state's specific budget. The strategies included in MV PICCS are:</p>
                     <div class="content-section overflow-scroll">
                         <ul>
-                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Automated Red-Light Enforcement</span><div class="intro-icon sprite red-light-camera"></div></a></li>
-                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Automated Speed-Camera Enforcement</span><div class="intro-icon sprite speed-camera"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Automated Red-Light Cameras</span><div class="intro-icon sprite red-light-camera"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Automated Speed Cameras</span><div class="intro-icon sprite speed-camera"></div></a></li>
                             <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Alcohol Interlocks</span><div class="intro-icon sprite alcohol-interlocks"></div></a></li>
                             <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Sobriety Checkpoints</span><div class="intro-icon sprite sobriety-checkpoints"></div></a></li>
                             <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Saturation Patrols</span><div class="intro-icon sprite saturation-patrols"></div></a></li>
@@ -64,7 +64,7 @@
                             <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Limits on Diversion and Plea Agreements</span><div class="intro-icon sprite limits-on-diversion"></div></a></li>
                             <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Vehicle Impoundment</span><div class="intro-icon sprite vehicle-impoundment"></div></a></li>
                             <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>In-Person License Renewal</span><div class="intro-icon sprite in-person-renewal"></div></a></li>
-                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Increased Fines for Seat Belt Use</span><div class="intro-icon sprite increased-seat-belt-fine"></div></a></li>
+                            <li><a target="_blank" href="https://www.cdc.gov/motorvehiclesafety/calculator/glossary.html#"><span>Increased Seat Belt Fines</span><div class="intro-icon sprite increased-seat-belt-fine"></div></a></li>
                         </ul>
                     </div>
                     <p>This widget estimates the number of injuries prevented, lives saved, and costs averted from implementing motor vehicle strategies in your state.</p>
@@ -82,7 +82,7 @@
                         <h2>Motor Vehicle Injury Prevention<br/><span class="small-header-font lightblue-font">Strategies That Are Used In Your State</span></h2>
                     </div>
                     <div class="page-content white">
-                        <div class="content-section center-align white">
+                        <div class="content-section padding-left-right white">
                             <p class="below-subheader">Select your state.</p>
                             <div class="select-wrapper">
                                 <select data-ng-model="state" id="state-input" data-ng-change="setIntervention()" control-navigation>
@@ -99,7 +99,7 @@
                                 <li class="intervention-list-item" data-ng-repeat="strategy in data[state]['Implemented Interventions']" data-ng-if="strategy" data-strategy="{{strategy}}"><span>{{strategiesFull[strategy]}}</span></li>
                             </ul>
                         </div>
-                        <div class="content-section next-page-prompt darkblue center-align small-font">
+                        <div class="content-section next-page-prompt darkblue small-font">
                             Strategies that <i>could be</i> used in your state...
                         </div>
                     </div>
@@ -117,30 +117,30 @@
                             </ul>
                             <span class="implementation-notation" data-ng-if="data[state]['Notation: Some MV PICCS strategies were not included'] === 'Yes'">*Some MV PICCS strategies were not included because they are not cost-effective to implement in your state. Strategies not included: <span data-ng-repeat="strategy in data[state]['Notation: Strategies Not included']" data-ng-if="strategy">{{strategiesFull[strategy]}}<span data-ng-if="!$last">,&nbsp;</span></span></span>
                         </div>
-                        <div class="content-section next-page-prompt darkblue center-align small-font">
+                        <div class="content-section next-page-prompt darkblue small-font">
                             See the costs and benefits of implementing these strategies...
                         </div>
                     </div>
                 </div><div id="page3" class="page">
                     <div class="page-header">
-                        <h2>If previous strategies were implemented in <span class="lightblue-font">{{state === "District of Columbia" ? "D.C." : state}}</span></h2><div id="state-icon" class="state-sprite {{state | classify}}"><span class="accessible-hide">{{state}}</span></div>
+                        <h2>If previous strategies were implemented in <span class="lightblue-font">{{state === "District of Columbia" ? "D.C." : state}}</span></h2><div id="state-icon" class="state-sprite {{state| classify}}"><span class="accessible-hide">{{state}}</span></div>
                     </div>
                     <div class="page-content white small-font">
-                        <div class="content-section margin-bottom darkblue-font bold-font">
+                        <div class="content-section margin-bottom gray-font bold-font">
                             <div class="small-icon sprite injuries">
                                 <span class="accessible-hide">Picture of an injured person</span>
                             </div>
-                            <span class="large-font">{{data[state]['Total # of Injuries Reduced']| number:0}}</span><br/>
+                            <span class="large-font darkblue-font">{{data[state]['Total # of Injuries Reduced']| number:0}}</span><br/>
                             <span class="icon-label">Injuries <span>could be</span> Prevented</span>
-                            <span class="percentage" data-ng-click="showToolTip = true"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font">{{data[state]['Percent Reduction in Injuries']}}<span class="small-font">%</span></span><br/>Reduction in Injuries<span data-ng-show="data[state]['Notation: Reduction in injuries'] === 'Yes'">*<span class="tooltip" data-ng-show="showToolTip">Percent reduction in injuries is higher than the number shown. Literature suggests sobriety checkpoints has a greater effect on the reduction of injuries than fatalities.</span></span></span>
+                            <span class="percentage" data-ng-click="showToolTip = true"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font darkblue-font">{{data[state]['Percent Reduction in Injuries']}}<span class="small-font">%</span></span><br/>Reduction in Injuries<span data-ng-show="data[state]['Notation: Reduction in injuries'] === 'Yes'">*<span class="tooltip" data-ng-show="showToolTip">Percent reduction in injuries is higher than the number shown. Literature suggests sobriety checkpoints has a greater effect on the reduction of injuries than fatalities.</span></span></span>
                         </div>
-                        <div class="content-section margin-bottom darkblue-font bold-font">
+                        <div class="content-section margin-bottom gray-font bold-font">
                             <div class="small-icon sprite deaths">
                                 <span class="accessible-hide">Picture of a beating heart</span>
                             </div> 
-                            <span class="large-font">{{data[state]['Total # of Fatalities Reduced']| number: 0}}</span><br/>
+                            <span class="large-font darkblue-font">{{data[state]['Total # of Fatalities Reduced']| number: 0}}</span><br/>
                             <span class="icon-label">Lives <span>could be</span> Saved</span>
-                            <span class="percentage"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font">{{data[state]['Percent Reduction in Fatalities']}}<span class="small-font">%</span></span><br/>Reduction in Deaths</span>
+                            <span class="percentage"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font darkblue-font">{{data[state]['Percent Reduction in Fatalities']}}<span class="small-font">%</span></span><br/>Reduction in Deaths</span>
                         </div>
                         <div class="content-section margin-bottom gray-font padding-left">
                             <strong>COST TO IMPLEMENT</strong><br/>
@@ -151,7 +151,7 @@
                             <span class="large-font darkblue-font">${{data[state]['Total Benefit']| number:0}}</span><span class="small-font"> per year</span>
                             <div class="dollarsign sprite"><span class="accessible-hide">Dollar Sign</span></div>
                         </div>
-                        <div class="content-section next-page-prompt darkblue center-align">
+                        <div class="content-section next-page-prompt darkblue">
                             <p>See how your state compares nationwide.</p>
                         </div>
                     </div>
@@ -159,51 +159,55 @@
                     <div class="page-header">
                         <h2>How Does Your State Compare?</h2>
                     </div>
-                    <div class="page-content white center-align">
-                        <p><strong>{{state| uppercase}}</strong></p>
-                        <p class="below-subheader">Select a strategy and see where it's been implemented:</p>
-                        <div class="select-wrapper">
-                            <select data-ng-model="intervention" data-ng-change="drawMap()" control-navigation>
-                                <option data-ng-repeat="strategy in strategies" value="{{strategy}}">{{strategiesFull[strategy]}}</option>
-                            </select>
-                            <div class="select-arrow lightblue darkblue-font" data-ng-click="openSelect($event)">^</div>
+                    <div class="page-content white">
+                        <div class="content-section padding-left-right">
+                            <p><strong>{{state| uppercase}}</strong></p>
+                            <p class="below-subheader">Select a strategy and see where it's been implemented:</p>
+                            <div class="select-wrapper">
+                                <select data-ng-model="intervention" data-ng-change="drawMap()" control-navigation>
+                                    <option data-ng-repeat="strategy in strategies | orderBy:'toString()'" value="{{strategy}}">{{strategiesFull[strategy]}}</option>
+                                </select>
+                                <div class="select-arrow lightblue darkblue-font" data-ng-click="openSelect($event)">^</div>
+                            </div>
+                            <div id="map">
+                            </div>
+                            <div class="center-align">
+                                <div id="maplegend" class="small-font">
+                                    <span id="implemented-sample" class="sample"></span><span>Implemented</span>
+                                    <span id="not-implemented-sample" class="sample"></span><span>Not Implemented</span>
+                                </div>
+                                <a href="#" data-ng-click="pageNumber = 1" class="small-font">Accessible Text Version</a>
+                            </div>
                         </div>
-                        <div id="map">
-                        </div>
-                        <div id="maplegend" class="small-font">
-                            <span id="implemented-sample" class="sample"></span><span>Implemented</span>
-                            <span id="not-implemented-sample" class="sample"></span><span>Not Implemented</span>
-                        </div>
-                        <a href="#" data-ng-click="pageNumber = 1" class="small-font">Accessible Text Version</a>
                         <div class="content-section next-page-prompt darkblue small-font">
                             <p>See the costs and benefits of implementing this strategy on the next screen</p>
                         </div>
                     </div>
                 </div><div id="page5" class="page">
                     <div class="page-header">
-                        <h2><span class="lightblue-font">{{strategiesFull[intervention]}}</span><br/><span class="small-header-font">Implementation of this strategy in <span class="lightblue-font">{{state === "District of Columbia" ? "D.C." : state}}</span>...</span></h2><div id="intervention-icon" class="sprite {{intervention | classify}}"><span class="accessible-hide">{{intervention}}</span></div>
+                        <h2><span class="lightblue-font">{{strategiesFull[intervention]}}</span><br/><span class="small-header-font">Implementation of this strategy in <span class="lightblue-font">{{state === "District of Columbia" ? "D.C." : state}}</span>...</span></h2><div id="intervention-icon" class="sprite {{intervention| classify}}"><span class="accessible-hide">{{intervention}}</span></div>
                     </div>
                     <div class="page-content white small-font">
-                        <div class="content-section margin-bottom darkblue-font bold-font">
+                        <div class="content-section margin-bottom gray-font bold-font">
                             <div class="small-icon sprite injuries">
                                 <span class="accessible-hide">Picture of an injured person</span>
                             </div>
-                            <span class="large-font">{{data[state][intervention + ': # of Injuries Reduced']| number:0}}</span><br/>
+                            <span class="large-font darkblue-font">{{data[state][intervention + ': # of Injuries Reduced']| number:0}}</span><br/>
                             <span class="icon-label">Injuries <span>could be</span> Prevented</span>
-                            <span class="percentage" data-ng-click="showToolTip = true"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font">{{data[state][intervention + ': Percent Reduction in Injuries']}}<span class="small-font">%</span></span><br/>Reduction in Injuries<span data-ng-show="intervention === 'Sobriety Checkpoints'">*<span class="tooltip" data-ng-show="showToolTip">Percent reduction in injuries is higher than the number shown. Literature suggests sobriety checkpoints has a greater effect on the reduction of injuries than fatalities.</span></span></span>
+                            <span class="percentage" data-ng-click="showToolTip = true"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font darkblue-font">{{data[state][intervention + ': Percent Reduction in Injuries']}}<span class="small-font">%</span></span><br/>Reduction in Injuries<span data-ng-show="intervention === 'Sobriety Checkpoints'">*<span class="tooltip" data-ng-show="showToolTip">Percent reduction in injuries is higher than the number shown. Literature suggests sobriety checkpoints has a greater effect on the reduction of injuries than fatalities.</span></span></span>
                         </div>
-                        <div class="content-section margin-bottom darkblue-font bold-font">
+                        <div class="content-section margin-bottom gray-font bold-font">
                             <div class="small-icon sprite deaths">
                                 <span class="accessible-hide">Picture of a beating heart</span>
                             </div>
-                            <span class="large-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span><br/>
+                            <span class="large-font darkblue-font">{{data[state][intervention + ': # of Fatalities Reduced']| number:0}}</span><br/>
                             <span class="icon-label">Lives <span>could be</span> Saved</span>
-                            <span class="percentage"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font">{{data[state][intervention + ': Percent Reduction in Fatalities']}}<span class="small-font">%</span></span><br/>Reduction in Deaths</span>
+                            <span class="percentage"><img src="img/down.png" alt="Down Arrow" class="down-arrow"/><span class="percentage-figure large-font darkblue-font">{{data[state][intervention + ': Percent Reduction in Fatalities']}}<span class="small-font">%</span></span><br/>Reduction in Deaths</span>
                         </div>
                         <div class="content-section margin-bottom gray-font padding-left">
                             <strong>COST TO IMPLEMENT</strong><br/>
                             <span class="large-font darkblue-font">${{data[state][intervention + ' (Fines Excluded): Cost $/year'] | number:0}}</span><span class="small-font"> per year</span> <br/>
-                            *If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year']| number:0}}/year.<span data-ng-if="data[state][intervention + ': Cost $/year'] < 0"> See <a target="_blank" href="https://wwwn.cdc.gov/mvip" data-ng-click="trackLink('MV PICCS')" control-navigation>MV PICCS</a> for specific cost-related details.</span><br/><br/>
+                            *If costs are offset by fines - approx. ${{data[state][intervention + ': Cost $/year'] < 0 ? 0 : data[state][intervention + ': Cost $/year']| number:0}}/year.<span data-ng-if="data[state][intervention + ': Cost $ / year'] < 0"> See <a target="_blank" href="https://wwwn.cdc.gov/mvip" data-ng-click="trackLink('MV PICCS')" control-navigation>MV PICCS</a> for specific cost-related details.</span><br/><br/>
                             <strong>MONETARY BENEFIT</strong><br/>
                             <span class="small-font">FROM INJURIES PREVENTED & LIVES SAVED</span><br/>
                             <span class="large-font darkblue-font">${{data[state][intervention + ': Benefit $/year']| number:0}}</span><span class="small-font"> per year</span>
@@ -262,14 +266,14 @@
             </div>
             <div id="footer" class="center-align">
                 <div id="carousel-dots" class="page{{pageNumber}}">
-                    <a data-ng-click="changePage($event)" href="#" class="triangle left-arrow" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation><span class="accessible-hide">Previous Page</span></a>
+                    <a data-ng-click="changePage($event)" href="#" class="triangle left-arrow" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&lt;<span class="accessible-hide">Previous Page</span></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 1"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 2"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 3"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 4"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 5"></a>
                     <a href="#" class="dot" data-ng-click="pageNumber = 6"></a>
-                    <a data-ng-click="changePage($event)" href="#" class="triangle right-arrow" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation><span class="accessible-hide">Previous Page</span></a>
+                    <a data-ng-click="changePage($event)" href="#" class="triangle right-arrow" tabindex="{{pageNumber > 1 ? 0 : -1}}" control-navigation>&gt;<span class="accessible-hide">Previous Page</span></a>
                 </div>
                 <div id="footer-buttons">
                     <a class="darkblue" href="#" data-ng-click="changeModal('Embed')">Embed</a>
