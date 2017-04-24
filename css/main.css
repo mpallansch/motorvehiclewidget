@@ -254,8 +254,9 @@ body {
 }
 
 #second-page-modal .overflow-scroll {
-    max-height: 200px;
     overflow-y: auto;
+    max-height: 185px;
+    margin-bottom: 15px;
 }
 
 #second-page-modal ul {
@@ -366,6 +367,14 @@ body {
     font-size: 1.1em;
 }
 
+#page2 .intervention-list {
+    padding-top: 30px;
+}
+
+#page3 .small-font, #page5.small-font {
+    font-size: .85em;
+}
+
 #page3 .content-section, #page5 .content-section {
     position: relative;
 }
@@ -374,13 +383,14 @@ body {
 #page3 .content-section:nth-child(2),
 #page5 .content-section:nth-child(1),
 #page5 .content-section:nth-child(2){
-    height: 60px;
+    height: 70px;
 }
 
 #page3 .content-section:nth-child(3),
 #page5 .content-section:nth-child(3){
     padding-bottom: 5px;
     padding-left: 65px;
+    padding-top: 10px;
 }
 
 #page3 .content-section:nth-child(1):after,
@@ -536,7 +546,7 @@ body {
     position: relative;
     top: 11px;
     display: inline-block;
-    width: 170px;
+    width: 200px;
     margin-left: 2px;
 }
 
@@ -617,7 +627,7 @@ body {
     display: inline-block;
 }
 
-.monetary-subheader {
+.monetary-subheader, .monetary-note {
     display: inline-block;
     padding-bottom: 5px;
 }
@@ -700,7 +710,7 @@ body {
 
 .large-font {
     font-weight: bold;
-    font-size: 1.9em;
+    font-size: 1.45em;
 }
 
 .x-large-font {
@@ -714,14 +724,6 @@ body {
 
 .normal-font {
     font-weight: normal;
-}
-
-.gray-font {
-    color: rgb(100, 100, 100);
-}
-
-.gray-font a {
-    color: rgb(100, 100, 100);
 }
 
 .darkblue-font {
@@ -1069,8 +1071,9 @@ body {
     }
     
     #second-page-modal .overflow-scroll {
-        max-height: 100px;
         overflow-y: auto;
+        max-height: 85px;
+        margin-bottom: 15px;
     }
     
     #first-page-modal td .sprite {
@@ -1097,7 +1100,15 @@ body {
     
     .icon-label {
         display: block;
-        width: 150px;
+        width: 155px;
         top: 0;
+    }
+
+    #page2 .intervention-list {
+        padding-top: 0;
+    }
+    
+    #page3 .small-font, #page5.small-font {
+        font-size: .7em;
     }
 }
