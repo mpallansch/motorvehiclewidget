@@ -585,11 +585,11 @@ body {
 }
 
 .left-arrow {
-    left: 3%;
+    left: 2px;
 }
 
 .right-arrow {
-    right: 3%;
+    right: 2px;
 }
 
 #footer .left-arrow, #footer .right-arrow {
